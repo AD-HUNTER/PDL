@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Libreria_TS">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/Libreria_TS" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib/Libreria_TS/src" />
+    </SOURCES>
+  </library>
+</component>

@@ -17,11 +17,41 @@ public class AnalizadorLexico {
         return caracter >= '0' && caracter <= '9';
     }
 
+    private boolean esDelimitador(char caracter) {
+        return (caracter == ' ' || caracter == '\t' || caracter == '\n');
+    }
+
     public AnalizadorLexico() {}
 
     public Token procesarFichero(int caracter) {
-
-        return null;
+        char c = (char) caracter;
+        if (esDelimitador(c)) {
+            return null;
+        }
+        switch (c) {
+            default:
+                String error="Caracter no reconocido: " + (char)caracter;
+                throw new IllegalArgumentException(error);
+            case '>':
+                return new Token("Mayor", "-");
+            case '!':
+                return new Token("Not", "-");
+            case '}':
+                return new Token("CierraCorch", "-");
+            case '{':
+                return new Token("AbreCorch", "-");
+            case '(':
+                return new Token("AbrePar", "-");
+            case ')':
+                return new Token("CierraPar", "-");
+            case ',':
+                return new Token("Coma", "-");
+            case ';':
+                return new Token("Pcoma", "-");
+            case '+':
+                return null;
+            case '-':
+        }
     }
 
 }

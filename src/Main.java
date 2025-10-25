@@ -3,21 +3,25 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static TS_Gestor gestor;
+    public static List<Token> tokens = new ArrayList<>();
+    public static List<Error> errores = new ArrayList<>();
 
-    private static void escribeFichTokens() {
+    private static void escribeFichTokens(List <Token> tokens) {
         // Escribe los tokens en el archivo de salida con el formato.
         try {
             FileWriter escritor = new FileWriter("Tokens.txt");
-            if(Token.tokens.isEmpty()) {
+            if(tokens.isEmpty()) {
                 escritor.append("No se han creado tokens.");
                 escritor.close();
             }
             else {
-                for (Token token : Token.tokens) {
+                for (Token token : tokens) {
                     escritor.append(" < " + token.getCodigo() + " , ");
                     // Escribir el atributo si existe
                     if (token.getAtributo() != null) {
@@ -35,17 +39,17 @@ public class Main {
         }
     }
 
-    private static void escribeFichErrores() {
+    private static void escribeFichErrores(List <Error> errores) {
         // Escribe los errores en el archivo de salida.
         try {
             FileWriter escritor = new FileWriter("Errores.txt");
             int numErr = 0;
-            if(Error.errores.isEmpty()) { // no hay errores
+            if(errores.isEmpty()) { // no hay errores
                 escritor.append("No se han encontrado errores.");
                 escritor.close();
             }
             else { // hay errores
-                for (Error error : Error.errores) {
+                for (Error error : errores) {
                     numErr++;
                     escritor.append(error.toString());
                 }
@@ -94,13 +98,10 @@ public class Main {
         gestor.addEntradaTPalabrasReservadas("write");
 
         // Llamamos al procesador con el fichero de entrada y tratamos errores.
-        try (BufferedReader lector = new BufferedReader(new FileReader(fichEntrada))){
-                int caracter;
-                while ((caracter = lector.read()) != -1) {
-                    lexico.procesarFichero(caracter);
-                }
-            escribeFichTokens();
-            escribeFichErrores();
+        try {
+            lexico.procesarFichero(fichEntrada);
+            escribeFichTokens(tokens);
+            escribeFichErrores(errores);
             System.out.println("El fichero fue procesado correctamente.");
             System.exit(0);
         } catch (Exception e) {

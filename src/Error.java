@@ -7,14 +7,12 @@ public class Error{
     private int linea;
     private String tipo;
     private String mensaje;
-    public static List<Error> errores = new ArrayList<>();
 
     // Constructor
     public Error(int linea, String tipo, String mensaje) {
         this.linea = linea;
         this.tipo = tipo;
         this.mensaje = mensaje;
-        errores.add(this);
     }
 
     public int getLinea() {

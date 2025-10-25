@@ -99,7 +99,8 @@ public class Main {
 
         // Llamamos al procesador con el fichero de entrada y tratamos errores.
         try {
-            lexico.procesarFichero(fichEntrada);
+            BufferedReader lector = new BufferedReader(new FileReader(fichEntrada));
+            lexico.procesarFichero(lector);
             escribeFichTokens(tokens);
             escribeFichErrores(errores);
             System.out.println("El fichero fue procesado correctamente.");

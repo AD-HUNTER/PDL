@@ -163,16 +163,36 @@ public class AnalizadorLexico {
     }
 
 
-    public void procesarFichero(File ficheroEntrada) throws Exception {
+    public void procesarFichero(BufferedReader lector) throws Exception {
         String estadoActual = estadoInicial;
-        BufferedReader lector = new BufferedReader(new FileReader(ficheroEntrada));
-        int caracter;
+        int caracter, linea = 1;
         char charAscii;
         while ((caracter = lector.read()) != -1) {
             charAscii = (char) caracter;
-
+            if (charAscii == '\n') {
+                linea++;
+            }
+            if (!alfabeto.contains(charAscii)) {
+                Main.errores.add(new Error(linea, "LEXICO", "Caracter no reconocido: " + charAscii));
+                continue;
+            }
+            String siguienteEstado = null;
+            Map<Character, String> mapa = transiciones.get(estadoActual);
+            if (mapa != null && mapa.containsKey(charAscii)) {
+                siguienteEstado = mapa.get(charAscii);
+                accionesSemanticas(estadoActual, siguienteEstado);
+                estadoActual = siguienteEstado;
+            }
+            else {
+                Main.errores.add(new Error(linea, "LEXICO", "Caracter no reconocido: " + charAscii));
+            }
         }
         Main.tokens.add(new Token("EOF", "-"));
         lector.close();
+    }
+    private void accionesSemanticas(String estadoAnterior, String estadoSiguiente) {
+        if (estadoAnterior.equals("q0") && estadoSiguiente.equals("q1")) {
+
+        }
     }
 }

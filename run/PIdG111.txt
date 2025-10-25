@@ -1,7 +1,7 @@
 var int x  = '';function string hola (hola){}
 var aaaaa99999 integer
 if k_bb_ then 
-aaaaa99999 = aaaaa999999*9876;
+aaaaa99999 = aaaaa999999*98.76;
 var int num  ;
 continue
 put(num,n1);input{num};var uu int;

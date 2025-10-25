@@ -11,6 +11,7 @@ public class Main {
     public static TS_Gestor gestor;
     public static List<Token> tokens = new ArrayList<>();
     public static List<Error> errores = new ArrayList<>();
+    public static boolean zonaFuncion=false;
 
     private static void escribeFichTokens(List <Token> tokens) {
         // Escribe los tokens en el archivo de salida con el formato.
@@ -77,6 +78,17 @@ public class Main {
             System.err.println("Error: El archivo proporcionado no es valido. Debe ser un archivo .txt o .javascript.");
             System.exit(2);
         }
+        java.io.File archivo = new java.io.File(fichEntrada);
+        if (!archivo.exists()) {
+            System.err.println("Error: El archivo '" + fichEntrada + "' no se encuentra.");
+            System.err.println("Ruta absoluta buscada: " + archivo.getAbsolutePath());
+            System.err.println("Directorio de trabajo actual: " + System.getProperty("user.dir"));
+            System.exit(4);
+        }
+        if (!archivo.canRead()) {
+            System.err.println("Error: No se puede leer el archivo '" + fichEntrada + "'.");
+            System.exit(5);
+        }
         // Creamos un nuevo procesador de lenguaje
         AnalizadorLexico lexico = new AnalizadorLexico();
         //AnalizadorSintactico parser = new AnalizadorSintactico();
@@ -99,8 +111,8 @@ public class Main {
 
         // Llamamos al procesador con el fichero de entrada y tratamos errores.
         try {
-            BufferedReader lector = new BufferedReader(new FileReader(fichEntrada));
-            lexico.procesarFichero(lector);
+
+            lexico.procesarFichero(fichEntrada);
             escribeFichTokens(tokens);
             escribeFichErrores(errores);
             System.out.println("El fichero fue procesado correctamente.");

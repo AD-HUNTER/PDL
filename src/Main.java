@@ -93,7 +93,7 @@ public class Main {
         AnalizadorLexico lexico = new AnalizadorLexico();
         //AnalizadorSintactico parser = new AnalizadorSintactico();
         //AnalizadorSemantico semantico = new AnalizadorSemantico();
-        gestor = new TS_Gestor("Tabla de Simbolos");
+        gestor = new TS_Gestor("Tabla de Simbolos.txt");
         gestor.createTPalabrasReservadas();
         gestor.createTSGlobal();
         gestor.addEntradaTPalabrasReservadas("boolean");
@@ -115,6 +115,7 @@ public class Main {
             lexico.procesarFichero(fichEntrada);
             escribeFichTokens(tokens);
             escribeFichErrores(errores);
+            gestor.write(TS_Gestor.Tabla.GLOBAL);
             System.out.println("El fichero fue procesado correctamente.");
             System.exit(0);
         } catch (Exception e) {

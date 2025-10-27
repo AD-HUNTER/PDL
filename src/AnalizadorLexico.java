@@ -50,12 +50,12 @@ public class AnalizadorLexico {
         this.alfabeto = Set.of('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
                 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
                 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-', '=', '!', '>', '.', ',', ';', '(',
-                ')', '{', '}', '+', ' ', '/', '*', '\t', '\n', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+                ')', '{', '}', '+', ' ', '/', '*', '"', '\t', '\n', '\r', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
         this.letras = Set.of('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
                 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
                 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w',
                 'x', 'y', 'z');
-        this.signos = Set.of('-', '=', '!', '>', ',', ';', '(', ')', '{', '}', '+');
+        this.signos = Set.of('-', '=', '!', '>', ',', ';', '(', ')', '{', '}', '+','"');
         this.digitos = Set.of('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
         this.estadoInicial = "q0";
         this.estadosFinales = Set.of("q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52", "q53");
@@ -79,6 +79,10 @@ public class AnalizadorLexico {
         q0map.put(')', "q45");
         q0map.put(';', "q46");
         q0map.put(',', "q47");
+        q0map.put(' ', "q0");
+        q0map.put('\t', "q0");
+        q0map.put('\n', "q0");
+        q0map.put('\r', "q0");
         this.transiciones.put("q0", q0map);
 
         this.transiciones.put("q1", Map.of('*', "q2"));
@@ -171,6 +175,7 @@ public class AnalizadorLexico {
     public void procesarFichero(String FichEntrada) throws Exception {
         BufferedReader lector = new BufferedReader(new FileReader(FichEntrada));
         String estadoActual = estadoInicial;
+        String siguienteEstado = null;
         int caracter, linea = 1;
         char charAscii;
         while ((caracter = lector.read()) != -1) {
@@ -180,21 +185,36 @@ public class AnalizadorLexico {
             }
             if (!alfabeto.contains(charAscii)) {
                 Main.errores.add(new Error(linea, "LEXICO", "Caracter no reconocido: " + charAscii));
+                estadoActual = estadoInicial;
+                siguienteEstado = null;
+                lexema.setLength(0);
+                valor = null;
+                valorFloat = 0.0;
+                ndecimales = 0;
                 continue;
             }
-            String siguienteEstado = null;
             Map<Character, String> mapa = transiciones.get(estadoActual);
-            if (mapa != null && mapa.containsKey(charAscii)) {
-                siguienteEstado = mapa.get(charAscii);
-                accionesSemanticas(estadoActual, siguienteEstado, charAscii, linea);
-                estadoActual = siguienteEstado;
-            }
-            else {
+            if (mapa == null || !mapa.containsKey(charAscii)) {
                 Main.errores.add(new Error(linea, "LEXICO", "Caracter no reconocido: " + charAscii));
+                estadoActual = estadoInicial;
+                siguienteEstado = null;
+                lexema.setLength(0);
+                valor = null;
+                valorFloat = 0.0;
+                ndecimales = 0;
+                continue;
+            }
+            siguienteEstado = mapa.get(charAscii);
+            accionesSemanticas(estadoActual, siguienteEstado, charAscii, linea);
+            estadoActual = siguienteEstado;
+            if (estadosFinales.contains(estadoActual)) {
+                estadoActual = estadoInicial;
             }
         }
+        if (caracter == -1){
         Main.tokens.add(new Token("EOF", "-"));
         lector.close();
+        }
     }
     private void accionesSemanticas(String estadoAnterior, String estadoSiguiente, char c, int linea) {
         String transicion = estadoAnterior + "->" + estadoSiguiente;
@@ -247,7 +267,7 @@ public class AnalizadorLexico {
                 break;
             case "q5->q50":
                 if (valor <= 32767) {
-                    Main.tokens.add(new Token("cte_entera", valor.toString()));
+                    Main.tokens.add(new Token("Entero", valor.toString()));
 
                 }else{
                     Main.errores.add(new Error(linea, "LEXICO", "El valor entero excede el limite permitido."));
@@ -265,7 +285,7 @@ public class AnalizadorLexico {
                 break;
             case "q10->q51":
                 if (valorFloat <= 117549436.0) {
-                    Main.tokens.add(new Token("cte_real", Double.toString(valorFloat)));
+                    Main.tokens.add(new Token("Real", Double.toString(valorFloat)));
                 }
                 else{
                     Main.errores.add(new Error(linea, "LEXICO", "El valor decimal excede el limite permitido."));

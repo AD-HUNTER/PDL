@@ -1,2 +1,16 @@
  < Id , 0 > 
+ < PalRes , 1 > 
+ < Id , 0 > 
+ < Pcoma , - > 
+ < PalRes , 6 > 
+ < Id , 0 > 
+ < Pcoma , - > 
+ < PalRes , 7 > 
+ < Id , 0 > 
+ < Pcoma , - > 
+ < PalRes , 7 > 
+ < Id , 0 > 
+ < Id , 0 > 
+ < Id , 0 > 
+ < Pcoma , - > 
  < EOF , - > 

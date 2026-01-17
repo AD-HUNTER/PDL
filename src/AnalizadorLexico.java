@@ -49,7 +49,7 @@ public class AnalizadorLexico {
                 "q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52", "q53");
         this.alfabeto = Set.of('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
                 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
-                'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-', '=', '!', '>', '.', ',', ';', '(',
+                'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-','_', '=', '!', '>', '.', ',', ';', '(',
                 ')', '{', '}', '+', ' ', '/', '*', '"', '\t', '\n', '\r', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
         this.letras = Set.of('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
                 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
@@ -58,7 +58,7 @@ public class AnalizadorLexico {
         this.signos = Set.of('-', '=', '!', '>', ',', ';', '(', ')', '{', '}', '+','"');
         this.digitos = Set.of('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
         this.estadoInicial = "q0";
-        this.estadosFinales = Set.of("q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52", "q53");
+        this.estadosFinales = Set.of("q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52");
 
         this.transiciones = new HashMap<>();
         Map<Character, String> q0map = new HashMap<>();
@@ -83,6 +83,7 @@ public class AnalizadorLexico {
         q0map.put('\t', "q0");
         q0map.put('\n', "q0");
         q0map.put('\r', "q0");
+        q0map.put('_', "q4");
         this.transiciones.put("q0", q0map);
 
         this.transiciones.put("q1", Map.of('*', "q2"));
@@ -90,7 +91,7 @@ public class AnalizadorLexico {
         Map<Character, String> q2map = new HashMap<>();
         for (Character ch : this.alfabeto) {
             if (ch != '*') {
-                q2map.put(ch, "q2"); // cualquier caracter menos * pasa a q3
+                q2map.put(ch, "q2"); // cualquier caracter menos * pasa a q2
             }
         }
         q2map.put('*', "q3");
@@ -98,11 +99,12 @@ public class AnalizadorLexico {
 
         Map<Character, String> q3map = new HashMap<>();
         for (Character ch : this.alfabeto) {
-            if (ch != '/') {
+            if (ch != '/' && ch != '*') {
                 q3map.put(ch, "q2"); // cualquier caracter menos / vuelve a q2
             }
         }
-        q3map.put('/', "q53");
+        q3map.put('/', "q0");
+        q3map.put('*', "q3");
         this.transiciones.put("q3", q3map);
 
         Map<Character, String> q4map = new HashMap<>();
@@ -112,6 +114,7 @@ public class AnalizadorLexico {
         for (Character ch : this.digitos) {
             q4map.put(ch, "q4");
         }
+        q4map.put('_', "q4");
         for (Character ch : this.alfabeto) {
             if (!q4map.containsKey(ch)) {
                 q4map.put(ch, "q52"); // cualquier otro caracter pasa a q52
@@ -149,12 +152,6 @@ public class AnalizadorLexico {
         }
         this.transiciones.put("q10", q10map);
 
-        Map<Character, String> q51map = new HashMap<>();
-        for (Character ch : this.alfabeto) {
-            q51map.put(ch, "q51");
-        }
-        this.transiciones.put("q51", q51map);
-
         this.transiciones.put("q9", Map.of('=', "q49"));
 
         Map<Character, String> q7map = new HashMap<>();
@@ -171,12 +168,12 @@ public class AnalizadorLexico {
         this.transiciones.put("q8", q8map);
     }
 
-
     public void procesarFichero(String FichEntrada) throws Exception {
         BufferedReader lector = new BufferedReader(new FileReader(FichEntrada));
         String estadoActual = estadoInicial;
         String siguienteEstado = null;
-        int caracter, linea = 1;
+        int caracter;
+        int linea = 1;
         char charAscii;
         while ((caracter = lector.read()) != -1) {
             charAscii = (char) caracter;
@@ -253,8 +250,12 @@ public class AnalizadorLexico {
                 lexema.append(c);
                 break;
             case "q8->q48":
-                Main.tokens.add(new Token("Cad", lexema.toString()));
-                lexema.setLength(0);
+                if (lexema.length() < 64){
+                    Main.tokens.add(new Token("Cad", lexema.toString()));
+                    lexema.setLength(0);
+                } else {
+                    Main.errores.add(new Error(linea, "LEXICO", "Cadena de caracteres muy larga."));
+                }
                 break;
             case "q9->q49":
                 Main.tokens.add(new Token("Inc", "-"));
@@ -277,11 +278,11 @@ public class AnalizadorLexico {
             case "q6->q10":
                 ndecimales = 1;
                 valorFloat = (double) valor + Character.getNumericValue(c) * Math.pow(10, -ndecimales);
-                ndecimales--;
+                ndecimales++;
                 break;
             case "q10->q10":
                 valorFloat = valorFloat + (double) Character.getNumericValue(c) * Math.pow(10, -ndecimales);
-                ndecimales--;
+                ndecimales++;
                 break;
             case "q10->q51":
                 if (valorFloat <= 117549436.0) {

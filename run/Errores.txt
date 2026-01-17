@@ -1,8 +1,1 @@
-Linea 1 LEXICO: Caracter no reconocido: =
-Linea 2 LEXICO: Caracter no reconocido: =
-Linea 2 LEXICO: El valor decimal excede el limite permitido.
-Linea 3 LEXICO: Caracter no reconocido: ^
-Linea 4 LEXICO: Caracter no reconocido: =
-Linea 4 LEXICO: Caracter no reconocido: _
-Linea 4 LEXICO: Caracter no reconocido: _
-Numero de errores: 7.
+No se han encontrado errores.

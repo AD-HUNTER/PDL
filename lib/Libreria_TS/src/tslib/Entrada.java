@@ -349,7 +349,7 @@ public class Entrada {
 					else {
 						String[] valor=atr.getValorLista();
 						for(int i=0;i<valor.length;i++) {
-							System.out.println("	+ TipoParam" + i +": '" + valor[i] + "'");
+							System.out.println("	+ TipoParam" + (i+1) +": '" + valor[i] + "'");
 						}
 					}
 				}
@@ -378,7 +378,7 @@ public class Entrada {
 					else {
 						String[] valor=atr.getValorLista();
 						for(int i=0;i<valor.length;i++) {
-							System.out.println("	+ ModoParam" + i +": '" + valor[i] + "'");
+							System.out.println("	+ ModoParam" + (i+1) +": '" + valor[i] + "'");
 						}
 					}
 				}
@@ -495,7 +495,7 @@ public class Entrada {
 					else {
 						String[] valor=atr2.getValorLista();
 						for(int i=0;i<valor.length;i++) {
-							System.out.println("	+ " + normalizar(atr2.getNombreAtributo()) + i +": '" + valor[i] + "'");
+							System.out.println("	+ " + normalizar(atr2.getNombreAtributo()) + (i+1) +": '" + valor[i] + "'");
 						}
 					}
 				}
@@ -602,7 +602,7 @@ public class Entrada {
 					else {
 						String[] valor=atr.getValorLista();
 						for(int i=0;i<valor.length;i++) {
-							escribirFichero(fich,"	+ TipoParam" + i +": '" + valor[i] + "'\n",primera_escritura);
+							escribirFichero(fich,"	+ TipoParam" + (i+1) +": '" + valor[i] + "'\n",primera_escritura);
 						}
 					}
 				}
@@ -631,7 +631,7 @@ public class Entrada {
 					else {
 						String[] valor=atr.getValorLista();
 						for(int i=0;i<valor.length;i++) {
-							escribirFichero(fich,"	+ ModoParam" + i +": '" + valor[i] + "'\n",primera_escritura);
+							escribirFichero(fich,"	+ ModoParam" + (i+1) +": '" + valor[i] + "'\n",primera_escritura);
 						}
 					}
 				}
@@ -750,7 +750,7 @@ public class Entrada {
 					else {
 						String[] valor=atr2.getValorLista();
 						for(int i=0;i<valor.length;i++) {
-							escribirFichero(fich,"	+ " + normalizar(atr2.getNombreAtributo()) + i +
+							escribirFichero(fich,"	+ " + normalizar(atr2.getNombreAtributo()) + (i+1) +
 									": '" + valor[i] + "'\n",primera_escritura);
 						}
 					}

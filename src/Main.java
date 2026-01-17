@@ -62,6 +62,59 @@ public class Main {
         }
     }
 
+    private  static void añadirAtributos(){
+        int res;
+        res=gestor.createAtributo("desp", TS_Gestor.DescripcionAtributo.DIR, TS_Gestor.TipoDatoAtributo.ENTERO);
+        if(res!=0){
+            System.out.println("Error al definir un atributo.");
+            System.exit(1);
+        }
+        res=gestor.createAtributo("número de parámetros", TS_Gestor.DescripcionAtributo.NUM_PARAM,
+                TS_Gestor.TipoDatoAtributo.ENTERO);
+        if(res!=0){
+            System.out.println("Error al definir un atributo.");
+            System.exit(1);
+        }
+        res=gestor.createAtributo("tipo de parámetros", TS_Gestor.DescripcionAtributo.TIPO_PARAM,
+                TS_Gestor.TipoDatoAtributo.LISTA);
+        if(res!=0){
+            System.out.println("Error al definir un atributo.");
+            System.exit(1);
+        }
+        res=gestor.createAtributo("modo de parámetros", TS_Gestor.DescripcionAtributo.MODO_PARAM,
+                TS_Gestor.TipoDatoAtributo.LISTA);
+        if(res!=0){
+            System.out.println("Error al definir un atributo.");
+            System.exit(1);
+        }
+        res=gestor.createAtributo("tipo de retorno", TS_Gestor.DescripcionAtributo.TIPO_RET,
+                TS_Gestor.TipoDatoAtributo.CADENA);
+        if(res!=0){
+            System.out.println("Error al definir un atributo.");
+            System.exit(1);
+        }
+        res=gestor.createAtributo("etiqueta", TS_Gestor.DescripcionAtributo.ETIQUETA, TS_Gestor.TipoDatoAtributo.CADENA);
+        if(res!=0){
+            System.out.println("Error al definir un atributo.");
+            System.exit(1);
+        }
+        res=gestor.createAtributo("parámetro", TS_Gestor.DescripcionAtributo.PARAM, TS_Gestor.TipoDatoAtributo.ENTERO);
+        if(res!=0){
+            System.out.println("Error al definir un atributo.");
+            System.exit(1);
+        }
+        res=gestor.createAtributo("dimensión", TS_Gestor.DescripcionAtributo.OTROS, TS_Gestor.TipoDatoAtributo.ENTERO);
+        if(res!=0){
+            System.out.println("Error al definir un atributo.");
+            System.exit(1);
+        }
+        res=gestor.createAtributo("elem", TS_Gestor.DescripcionAtributo.OTROS, TS_Gestor.TipoDatoAtributo.CADENA);
+        if(res!=0){
+            System.out.println("Error al definir un atributo.");
+            System.exit(1);
+        }
+    }
+
     public static void main(String[] args) {
 
         String fichEntrada = null; // Fichero de entrada.
@@ -94,6 +147,8 @@ public class Main {
         //AnalizadorSintactico parser = new AnalizadorSintactico();
         //AnalizadorSemantico semantico = new AnalizadorSemantico();
         gestor = new TS_Gestor("Tabla de Simbolos.txt");
+        gestor.activarDebug();
+        añadirAtributos();
         gestor.createTPalabrasReservadas();
         gestor.createTSGlobal();
         gestor.addEntradaTPalabrasReservadas("boolean");

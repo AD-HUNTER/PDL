@@ -1,0 +1,7 @@
+i += 123 ; /*Comentario de ejemplo*/
+let string cad ;
+let float r ;
+write i ;
+cad += "hola" ;
+r += 1234.56 ;
+i += r > 8.8 ; 

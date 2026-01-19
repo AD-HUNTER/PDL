@@ -736,7 +736,7 @@ public class AnalizadorSintactico {
                 if(s.equals("T")) {
                     respuesta = EstadosSintactico.I20;
                 }
-                else if(s.equals("F")) {
+                else if(s.equals("F1")) {
                     respuesta = EstadosSintactico.I21;
                 }
                 else
@@ -1160,7 +1160,7 @@ public class AnalizadorSintactico {
                 else error();
                 break;
             case I164:
-                if(s.equals("U1")) respuesta = EstadosSintactico.I178;
+                if(s.equals("U1")) respuesta = EstadosSintactico.I180;
                 else error();
                 break;
             case I167:
@@ -1221,7 +1221,7 @@ public class AnalizadorSintactico {
                         else if (s.equals("return")) desplazamiento= desplazamiento(s, EstadosSintactico.I6);
                         else if (s.equals("write")) desplazamiento= desplazamiento(s, EstadosSintactico.I7);
                         else if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I8);
-                        else if (s.equals("$")) desplazamiento= desplazamiento(s, EstadosSintactico.I9);
+                        else if (s.equals("$")) desplazamiento(s, EstadosSintactico.I9);
                         break;
 
                     case I1:
@@ -1296,7 +1296,7 @@ public class AnalizadorSintactico {
                         else if (s.equals("return")) desplazamiento= desplazamiento(s, EstadosSintactico.I6);
                         else if (s.equals("write")) desplazamiento= desplazamiento(s, EstadosSintactico.I7);
                         else if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I8);
-                        else if (s.equals("$")) desplazamiento= desplazamiento(s, EstadosSintactico.I9);
+                        else if (s.equals("$")) desplazamiento(s, EstadosSintactico.I9);
                         break;
 
                     case I12:
@@ -1316,7 +1316,7 @@ public class AnalizadorSintactico {
                         else if (s.equals("return")) desplazamiento= desplazamiento(s, EstadosSintactico.I6);
                         else if (s.equals("write")) desplazamiento= desplazamiento(s, EstadosSintactico.I7);
                         else if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I8);
-                        else if (s.equals("$")) desplazamiento= desplazamiento(s, EstadosSintactico.I9);
+                        else if (s.equals("$")) desplazamiento(s, EstadosSintactico.I9);
                         break;
 
                     case I14:
@@ -1431,7 +1431,7 @@ public class AnalizadorSintactico {
 
                     case I31:
                         if (s.equals(";")) {
-                            reduccion(s, Reglas.R53);
+                            desplazamiento = desplazamiento(s, EstadosSintactico.I53);
                         }
                         break;
 
@@ -1600,7 +1600,7 @@ public class AnalizadorSintactico {
                     break;
 
                 case I57:
-                    if (s.equals(",") || s.equals(">")) {
+                    if (s.equals(";") || s.equals(">")) {
                         reduccion(s, Reglas.R35);
                     }
                     break;
@@ -1663,10 +1663,10 @@ public class AnalizadorSintactico {
                     break;
 
                 case I67:
-                    if (s.equals("read")) desplazamiento = desplazamiento(s, EstadosSintactico.I5);
-                    else if (s.equals("retrun")) desplazamiento = desplazamiento(s, EstadosSintactico.I6);
-                    else if (s.equals("write")) desplazamiento = desplazamiento(s, EstadosSintactico.I7);
-                    else if (s.equals("id")) desplazamiento = desplazamiento(s, EstadosSintactico.I8);
+                    if (s.equals("read")) desplazamiento= desplazamiento(s, EstadosSintactico.I5);
+                    else if (s.equals("return")) desplazamiento= desplazamiento(s, EstadosSintactico.I6);
+                    else if (s.equals("write")) desplazamiento= desplazamiento(s, EstadosSintactico.I7);
+                    else if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I8);
                     break;
 
                 case I68:
@@ -1715,6 +1715,7 @@ public class AnalizadorSintactico {
 
                 case I75:
                     if (s.equals(";")) desplazamiento = desplazamiento(s, EstadosSintactico.I89);
+                    break;
 
                 case I76:
                     if (s.equals("id")) desplazamiento = desplazamiento(s, EstadosSintactico.I121);
@@ -1752,7 +1753,7 @@ public class AnalizadorSintactico {
                     break;
 
                 case I82:
-                    if (s.equals("id")) desplazamiento = desplazamiento(s, EstadosSintactico.I93);
+                    if (s.equals(")")) desplazamiento = desplazamiento(s, EstadosSintactico.I93);
                     break;
 
                 case I83:
@@ -2056,7 +2057,8 @@ public class AnalizadorSintactico {
                         desplazamiento = desplazamiento(s, EstadosSintactico.I117);
                     break;
                 case I118:
-                    if (s.equals(")")) {
+                    if (s.equals(">")) desplazamiento = desplazamiento(s, EstadosSintactico.I141);
+                    else if (s.equals(")")) {
                         reduccion(s, Reglas.R32);
                     }
                     break;
@@ -2461,8 +2463,7 @@ public class AnalizadorSintactico {
                     break;
 
                 case I164:
-                    if (s.equals("-"))
-                        desplazamiento = desplazamiento(s, EstadosSintactico.I143);
+                    if (s.equals("-")) desplazamiento = desplazamiento(s, EstadosSintactico.I143);
                     if (s.equals(")") || s.equals(">")) {
                         reduccion(s, Reglas.R37);
                     }

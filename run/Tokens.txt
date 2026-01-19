@@ -1,5 +1,9 @@
- < PalRes , 7 > 
+ < PalRes , 4 > 
  < PalRes , 6 > 
  < Id , 1 > 
- < Pcoma , - > 
+ < AbrePar , - > 
+ < PalRes , 11 > 
+ < CierraPar , - > 
+ < AbreCorch , - > 
+ < CierraCorch , - > 
  < EOF , - > 

@@ -1,5 +1,28 @@
+ < PalRes , 7 > 
+ < PalRes , 6 > 
  < Id , 1 > 
- < Menos , - > 
+ < Pcoma , - > 
+ < PalRes , 7 > 
+ < PalRes , 2 > 
  < Id , 2 > 
  < Pcoma , - > 
+ < PalRes , 4 > 
+ < PalRes , 11 > 
+ < Id , 3 > 
+ < AbrePar , - > 
+ < PalRes , 6 > 
+ < Id , -1 > 
+ < Coma , - > 
+ < PalRes , 2 > 
+ < Id , -2 > 
+ < CierraPar , - > 
+ < AbreCorch , - > 
+ < Id , 1 > 
+ < Inc , - > 
+ < Id , 2 > 
+ < Pcoma , - > 
+ < PalRes , 9 > 
+ < Id , 1 > 
+ < Pcoma , - > 
+ < CierraCorch , - > 
  < EOF , - > 

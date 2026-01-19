@@ -1212,352 +1212,352 @@ public class AnalizadorSintactico {
 
             estadoActual = (EstadosSintactico) pila.peek();//Lo que este encima de la pila ser� el estado en que se este
             switch (estadoActual) {
-                    case I0:
-                        if (s.equals("for")) desplazamiento= desplazamiento(s, EstadosSintactico.I1);
-                        else if (s.equals("function")) desplazamiento= desplazamiento(s, EstadosSintactico.I2);
-                        else if (s.equals("if")) desplazamiento= desplazamiento(s, EstadosSintactico.I3);
-                        else if (s.equals("let")) desplazamiento= desplazamiento(s, EstadosSintactico.I4);
-                        else if (s.equals("read")) desplazamiento= desplazamiento(s, EstadosSintactico.I5);
-                        else if (s.equals("return")) desplazamiento= desplazamiento(s, EstadosSintactico.I6);
-                        else if (s.equals("write")) desplazamiento= desplazamiento(s, EstadosSintactico.I7);
-                        else if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I8);
-                        else if (s.equals("$")) desplazamiento(s, EstadosSintactico.I9);
-                        break;
+                case I0:
+                    if (s.equals("for")) desplazamiento= desplazamiento(s, EstadosSintactico.I1);
+                    else if (s.equals("function")) desplazamiento= desplazamiento(s, EstadosSintactico.I2);
+                    else if (s.equals("if")) desplazamiento= desplazamiento(s, EstadosSintactico.I3);
+                    else if (s.equals("let")) desplazamiento= desplazamiento(s, EstadosSintactico.I4);
+                    else if (s.equals("read")) desplazamiento= desplazamiento(s, EstadosSintactico.I5);
+                    else if (s.equals("return")) desplazamiento= desplazamiento(s, EstadosSintactico.I6);
+                    else if (s.equals("write")) desplazamiento= desplazamiento(s, EstadosSintactico.I7);
+                    else if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I8);
+                    else if (s.equals("$")) desplazamiento(s, EstadosSintactico.I9);
+                    break;
 
-                    case I1:
-                        if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I14);
-                        break;
+                case I1:
+                    if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I14);
+                    break;
 
-                    case I2:
-                        if (s.equals("boolean")) desplazamiento= desplazamiento(s, EstadosSintactico.I15);
-                        else if (s.equals("float")) desplazamiento= desplazamiento(s, EstadosSintactico.I16);
-                        else if (s.equals("int")) desplazamiento= desplazamiento(s, EstadosSintactico.I17);
-                        else if (s.equals("string")) desplazamiento= desplazamiento(s, EstadosSintactico.I18);
-                        else if (s.equals("void")) desplazamiento= desplazamiento(s, EstadosSintactico.I19);
-                        break;
+                case I2:
+                    if (s.equals("boolean")) desplazamiento= desplazamiento(s, EstadosSintactico.I15);
+                    else if (s.equals("float")) desplazamiento= desplazamiento(s, EstadosSintactico.I16);
+                    else if (s.equals("int")) desplazamiento= desplazamiento(s, EstadosSintactico.I17);
+                    else if (s.equals("string")) desplazamiento= desplazamiento(s, EstadosSintactico.I18);
+                    else if (s.equals("void")) desplazamiento= desplazamiento(s, EstadosSintactico.I19);
+                    break;
 
-                    case I3:
-                        if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I22);
-                        break;
+                case I3:
+                    if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I22);
+                    break;
 
-                    case I4:
-                        if (s.equals("boolean") || s.equals("float") || s.equals("int") || s.equals("string")) {
-                            reduccion(s, Reglas.R13); // M -> ε
-                        }
-                        break;
+                case I4:
+                    if (s.equals("boolean") || s.equals("float") || s.equals("int") || s.equals("string")) {
+                        reduccion(s, Reglas.R13); // M -> ε
+                    }
+                    break;
 
-                    case I5:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I24);
-                        break;
+                case I5:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I24);
+                    break;
 
-                    case I6:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I25);
-                        else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I26);
-                        else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I27);
-                        else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I28);
-                        else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I29);
-                        else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I30);
-                        else if (s.equals(";")) {
-                            reduccion(s, Reglas.R29); // X -> ε
-                        }
-                        break;
+                case I6:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I25);
+                    else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I26);
+                    else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I27);
+                    else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I28);
+                    else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I29);
+                    else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I30);
+                    else if (s.equals(";")) {
+                        reduccion(s, Reglas.R29); // X -> ε
+                    }
+                    break;
 
-                    case I7:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I25);
-                        else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I26);
-                        else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I27);
-                        else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I28);
-                        else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I29);
-                        else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I30);
-                        break;
+                case I7:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I25);
+                    else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I26);
+                    else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I27);
+                    else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I28);
+                    else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I29);
+                    else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I30);
+                    break;
 
-                    case I8:
-                        if (s.equals("+=")) desplazamiento= desplazamiento(s, EstadosSintactico.I37);
-                        else if (s.equals("=")) desplazamiento= desplazamiento(s, EstadosSintactico.I38);
-                        else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I39);
-                        break;
+                case I8:
+                    if (s.equals("+=")) desplazamiento= desplazamiento(s, EstadosSintactico.I37);
+                    else if (s.equals("=")) desplazamiento= desplazamiento(s, EstadosSintactico.I38);
+                    else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I39);
+                    break;
 
-                    case I9:
-                        if (s.equals("$")) {
-                            reduccion(s, Reglas.R3); // P -> EOF
-                        }
-                        break;
+                case I9:
+                    if (s.equals("$")) {
+                        reduccion(s, Reglas.R3); // P -> EOF
+                    }
+                    break;
 
-                    case I10:
-                        if (s.equals("$")) desplazamiento= desplazamiento(s, EstadosSintactico.I40);
-                        break;
+                case I10:
+                    if (s.equals("$")) desplazamiento= desplazamiento(s, EstadosSintactico.I40);
+                    break;
 
-                    case I11:
-                        if (s.equals("for")) desplazamiento= desplazamiento(s, EstadosSintactico.I1);
-                        else if (s.equals("function")) desplazamiento= desplazamiento(s, EstadosSintactico.I2);
-                        else if (s.equals("if")) desplazamiento= desplazamiento(s, EstadosSintactico.I3);
-                        else if (s.equals("let")) desplazamiento= desplazamiento(s, EstadosSintactico.I4);
-                        else if (s.equals("read")) desplazamiento= desplazamiento(s, EstadosSintactico.I5);
-                        else if (s.equals("return")) desplazamiento= desplazamiento(s, EstadosSintactico.I6);
-                        else if (s.equals("write")) desplazamiento= desplazamiento(s, EstadosSintactico.I7);
-                        else if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I8);
-                        else if (s.equals("$")) desplazamiento(s, EstadosSintactico.I9);
-                        break;
+                case I11:
+                    if (s.equals("for")) desplazamiento= desplazamiento(s, EstadosSintactico.I1);
+                    else if (s.equals("function")) desplazamiento= desplazamiento(s, EstadosSintactico.I2);
+                    else if (s.equals("if")) desplazamiento= desplazamiento(s, EstadosSintactico.I3);
+                    else if (s.equals("let")) desplazamiento= desplazamiento(s, EstadosSintactico.I4);
+                    else if (s.equals("read")) desplazamiento= desplazamiento(s, EstadosSintactico.I5);
+                    else if (s.equals("return")) desplazamiento= desplazamiento(s, EstadosSintactico.I6);
+                    else if (s.equals("write")) desplazamiento= desplazamiento(s, EstadosSintactico.I7);
+                    else if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I8);
+                    else if (s.equals("$")) desplazamiento(s, EstadosSintactico.I9);
+                    break;
 
-                    case I12:
-                        if (s.equals("for") || s.equals("function") || s.equals("if") ||
-                                s.equals("let") || s.equals("read") || s.equals("return") ||
-                                s.equals("write") || s.equals("id") || s.equals("$")) {
-                            reduccion(s, Reglas.R7); // B -> S
-                        }
-                        break;
+                case I12:
+                    if (s.equals("for") || s.equals("function") || s.equals("if") ||
+                            s.equals("let") || s.equals("read") || s.equals("return") ||
+                            s.equals("write") || s.equals("id") || s.equals("$")) {
+                        reduccion(s, Reglas.R7); // B -> S
+                    }
+                    break;
 
-                    case I13:
-                        if (s.equals("for")) desplazamiento= desplazamiento(s, EstadosSintactico.I1);
-                        else if (s.equals("function")) desplazamiento= desplazamiento(s, EstadosSintactico.I2);
-                        else if (s.equals("if")) desplazamiento= desplazamiento(s, EstadosSintactico.I3);
-                        else if (s.equals("let")) desplazamiento= desplazamiento(s, EstadosSintactico.I4);
-                        else if (s.equals("read")) desplazamiento= desplazamiento(s, EstadosSintactico.I5);
-                        else if (s.equals("return")) desplazamiento= desplazamiento(s, EstadosSintactico.I6);
-                        else if (s.equals("write")) desplazamiento= desplazamiento(s, EstadosSintactico.I7);
-                        else if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I8);
-                        else if (s.equals("$")) desplazamiento(s, EstadosSintactico.I9);
-                        break;
+                case I13:
+                    if (s.equals("for")) desplazamiento= desplazamiento(s, EstadosSintactico.I1);
+                    else if (s.equals("function")) desplazamiento= desplazamiento(s, EstadosSintactico.I2);
+                    else if (s.equals("if")) desplazamiento= desplazamiento(s, EstadosSintactico.I3);
+                    else if (s.equals("let")) desplazamiento= desplazamiento(s, EstadosSintactico.I4);
+                    else if (s.equals("read")) desplazamiento= desplazamiento(s, EstadosSintactico.I5);
+                    else if (s.equals("return")) desplazamiento= desplazamiento(s, EstadosSintactico.I6);
+                    else if (s.equals("write")) desplazamiento= desplazamiento(s, EstadosSintactico.I7);
+                    else if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I8);
+                    else if (s.equals("$")) desplazamiento(s, EstadosSintactico.I9);
+                    break;
 
-                    case I14:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I43);
-                        else if (s.equals(";")) {
-                            reduccion(s, Reglas.R9); // G1 -> ε
-                        }
-                        break;
+                case I14:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I43);
+                    else if (s.equals(";")) {
+                        reduccion(s, Reglas.R9); // G1 -> ε
+                    }
+                    break;
 
-                    case I15:
-                        if (s.equals("id")) {
-                            reduccion(s, Reglas.R16); // T -> boolean
-                        }
-                        break;
+                case I15:
+                    if (s.equals("id")) {
+                        reduccion(s, Reglas.R16); // T -> boolean
+                    }
+                    break;
 
-                    case I16:
-                        if (s.equals("id")) {
-                            reduccion(s, Reglas.R15); // T -> float
-                        }
-                        break;
+                case I16:
+                    if (s.equals("id")) {
+                        reduccion(s, Reglas.R15); // T -> float
+                    }
+                    break;
 
-                    case I17:
-                        if (s.equals("id")) {
-                            reduccion(s, Reglas.R14); // T -> int
-                        }
-                        break;
+                case I17:
+                    if (s.equals("id")) {
+                        reduccion(s, Reglas.R14); // T -> int
+                    }
+                    break;
 
-                    case I18:
-                        if (s.equals("id")) {
-                            reduccion(s, Reglas.R17); // T -> string
-                        }
-                        break;
+                case I18:
+                    if (s.equals("id")) {
+                        reduccion(s, Reglas.R17); // T -> string
+                    }
+                    break;
 
-                    case I19:
-                        if (s.equals("id")) {
-                            reduccion(s, Reglas.R46); // F1 -> void
-                        }
-                        break;
+                case I19:
+                    if (s.equals("id")) {
+                        reduccion(s, Reglas.R46); // F1 -> void
+                    }
+                    break;
 
-                    case I20:
-                        if (s.equals("id")) {
-                            reduccion(s, Reglas.R45); // F1 -> T
-                        }
-                        break;
+                case I20:
+                    if (s.equals("id")) {
+                        reduccion(s, Reglas.R45); // F1 -> T
+                    }
+                    break;
 
-                    case I21:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I45);
-                        break;
+                case I21:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I45);
+                    break;
 
-                    case I22:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I112);
-                        else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I113);
-                        else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I114);
-                        else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I115);
-                        else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I116);
-                        else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I117);
-                        break;
+                case I22:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I112);
+                    else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I113);
+                    else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I114);
+                    else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I115);
+                    else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I116);
+                    else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I117);
+                    break;
 
-                    case I23:
-                        if (s.equals("boolean")) desplazamiento= desplazamiento(s, EstadosSintactico.I15);
-                        else if (s.equals("float")) desplazamiento= desplazamiento(s, EstadosSintactico.I16);
-                        else if (s.equals("int")) desplazamiento= desplazamiento(s, EstadosSintactico.I17);
-                        else if (s.equals("string")) desplazamiento= desplazamiento(s, EstadosSintactico.I18);
-                        break;
+                case I23:
+                    if (s.equals("boolean")) desplazamiento= desplazamiento(s, EstadosSintactico.I15);
+                    else if (s.equals("float")) desplazamiento= desplazamiento(s, EstadosSintactico.I16);
+                    else if (s.equals("int")) desplazamiento= desplazamiento(s, EstadosSintactico.I17);
+                    else if (s.equals("string")) desplazamiento= desplazamiento(s, EstadosSintactico.I18);
+                    break;
 
-                    case I24:
-                        if (s.equals(";")) desplazamiento= desplazamiento(s, EstadosSintactico.I49);
-                        break;
+                case I24:
+                    if (s.equals(";")) desplazamiento= desplazamiento(s, EstadosSintactico.I49);
+                    break;
 
-                    case I25:
-                        if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I50);
-                        else if (s.equals(";") || s.equals("-") || s.equals(">")) {
-                            reduccion(s, Reglas.R38); // V -> ID
-                        }
-                        break;
+                case I25:
+                    if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I50);
+                    else if (s.equals(";") || s.equals("-") || s.equals(">")) {
+                        reduccion(s, Reglas.R38); // V -> ID
+                    }
+                    break;
 
-                    case I26:
-                        if (s.equals(";") || s.equals("-") || s.equals(">")) {
-                            reduccion(s, Reglas.R39); // V -> ENTERO
-                        }
-                        break;
+                case I26:
+                    if (s.equals(";") || s.equals("-") || s.equals(">")) {
+                        reduccion(s, Reglas.R39); // V -> ENTERO
+                    }
+                    break;
 
-                    case I27:
-                        if (s.equals(";") || s.equals("-") || s.equals(">")) {
-                            reduccion(s, Reglas.R40); // V -> REAL
-                        }
-                        break;
+                case I27:
+                    if (s.equals(";") || s.equals("-") || s.equals(">")) {
+                        reduccion(s, Reglas.R40); // V -> REAL
+                    }
+                    break;
 
-                    case I28:
-                        if (s.equals(";") || s.equals("-") || s.equals(">")) {
-                            reduccion(s, Reglas.R41); // V -> CADENA
-                        }
-                        break;
+                case I28:
+                    if (s.equals(";") || s.equals("-") || s.equals(">")) {
+                        reduccion(s, Reglas.R41); // V -> CADENA
+                    }
+                    break;
 
-                    case I29:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I112);
-                        else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I113);
-                        else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I114);
-                        else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I115);
-                        else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I116);
-                        else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I117);
-                        break;
+                case I29:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I112);
+                    else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I113);
+                    else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I114);
+                    else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I115);
+                    else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I116);
+                    else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I117);
+                    break;
 
-                    case I30:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I25);
-                        else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I26);
-                        else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I27);
-                        else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I28);
-                        else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I29);
-                        else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I30);
-                        break;
+                case I30:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I25);
+                    else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I26);
+                    else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I27);
+                    else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I28);
+                    else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I29);
+                    else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I30);
+                    break;
 
-                    case I31:
-                        if (s.equals(";")) {
-                            desplazamiento = desplazamiento(s, EstadosSintactico.I53);
-                        }
-                        break;
+                case I31:
+                    if (s.equals(";")) {
+                        desplazamiento = desplazamiento(s, EstadosSintactico.I53);
+                    }
+                    break;
 
-                    case I32:
-                        if (s.equals(";")) {
-                            reduccion(s, Reglas.R28);
-                        }
-                        break;
+                case I32:
+                    if (s.equals(";")) {
+                        reduccion(s, Reglas.R28);
+                    }
+                    break;
 
-                    case I33:
-                        if (s.equals(">")) desplazamiento= desplazamiento(s, EstadosSintactico.I54);
-                        else if (s.equals(";")) {
-                            reduccion(s, Reglas.R32);
-                        }
-                        break;
+                case I33:
+                    if (s.equals(">")) desplazamiento= desplazamiento(s, EstadosSintactico.I54);
+                    else if (s.equals(";")) {
+                        reduccion(s, Reglas.R32);
+                    }
+                    break;
 
-                    case I34:
-                        if (s.equals(";") || s.equals(">")) {
-                            reduccion(s, Reglas.R34);
-                        }
-                        break;
+                case I34:
+                    if (s.equals(";") || s.equals(">")) {
+                        reduccion(s, Reglas.R34);
+                    }
+                    break;
 
-                    case I35:
-                        if (s.equals("-")) desplazamiento= desplazamiento(s, EstadosSintactico.I56);
-                        else if (s.equals(";") || s.equals(">")) {
-                            reduccion(s, Reglas.R37);
-                        }
-                        break;
+                case I35:
+                    if (s.equals("-")) desplazamiento= desplazamiento(s, EstadosSintactico.I56);
+                    else if (s.equals(";") || s.equals(">")) {
+                        reduccion(s, Reglas.R37);
+                    }
+                    break;
 
-                    case I36:
-                        if (s.equals(";")) desplazamiento= desplazamiento(s, EstadosSintactico.I58);
-                        break;
+                case I36:
+                    if (s.equals(";")) desplazamiento= desplazamiento(s, EstadosSintactico.I58);
+                    break;
 
-                    case I37:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I25);
-                        else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I26);
-                        else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I27);
-                        else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I28);
-                        else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I29);
-                        else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I30);
-                        break;
+                case I37:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I25);
+                    else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I26);
+                    else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I27);
+                    else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I28);
+                    else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I29);
+                    else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I30);
+                    break;
 
-                    case I38:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I25);
-                        else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I26);
-                        else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I27);
-                        else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I28);
-                        else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I29);
-                        else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I30);
-                        break;
+                case I38:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I25);
+                    else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I26);
+                    else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I27);
+                    else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I28);
+                    else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I29);
+                    else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I30);
+                    break;
 
-                    case I39:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I121);
-                        else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I122);
-                        else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I123);
-                        else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I124);
-                        else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I125);
-                        else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I126);
-                        else if (s.equals(")")) {
-                            reduccion(s, Reglas.R25);
-                        }
-                        break;
+                case I39:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I121);
+                    else if (s.equals("entero")) desplazamiento= desplazamiento(s, EstadosSintactico.I122);
+                    else if (s.equals("real")) desplazamiento= desplazamiento(s, EstadosSintactico.I123);
+                    else if (s.equals("cadena")) desplazamiento= desplazamiento(s, EstadosSintactico.I124);
+                    else if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I125);
+                    else if (s.equals("!")) desplazamiento= desplazamiento(s, EstadosSintactico.I126);
+                    else if (s.equals(")")) {
+                        reduccion(s, Reglas.R25);
+                    }
+                    break;
 
-                    case I40:
-                        if(s.equals("$")) {
-                            aceptado = true;
-                            desplazamiento = true;
-                        }
-                        break;
-                    case I41:
-                        if(s.equals("$")) {
-                            reduccion(s, Reglas.R1);
-                        }
-                        break;
+                case I40:
+                    if(s.equals("$")) {
+                        aceptado = true;
+                        desplazamiento = true;
+                    }
+                    break;
+                case I41:
+                    if(s.equals("$")) {
+                        reduccion(s, Reglas.R1);
+                    }
+                    break;
 
-                    case I42:
-                        if(s.equals("$")) {
-                            reduccion(s, Reglas.R2);
-                        }
-                        break;
+                case I42:
+                    if(s.equals("$")) {
+                        reduccion(s, Reglas.R2);
+                    }
+                    break;
 
-                    case I43:
-                        if (s.equals("=")) desplazamiento= desplazamiento(s, EstadosSintactico.I63);
-                        break;
+                case I43:
+                    if (s.equals("=")) desplazamiento= desplazamiento(s, EstadosSintactico.I63);
+                    break;
 
-                    case I44:
-                        if (s.equals(";")) desplazamiento= desplazamiento(s, EstadosSintactico.I64);
-                        break;
+                case I44:
+                    if (s.equals(";")) desplazamiento= desplazamiento(s, EstadosSintactico.I64);
+                    break;
 
-                    case I45:
-                        if (s.equals("(")) {
-                            reduccion(s, Reglas.R47);
-                        }
-                        break;
+                case I45:
+                    if (s.equals("(")) {
+                        reduccion(s, Reglas.R47);
+                    }
+                    break;
 
-                    case I46:
-                        if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I65);
-                        break;
+                case I46:
+                    if (s.equals("(")) desplazamiento= desplazamiento(s, EstadosSintactico.I65);
+                    break;
 
-                    case I47:
-                        if (s.equals(")")) desplazamiento= desplazamiento(s, EstadosSintactico.I67);
-                        break;
+                case I47:
+                    if (s.equals(")")) desplazamiento= desplazamiento(s, EstadosSintactico.I67);
+                    break;
 
-                    case I48:
-                        if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I68);
-                        break;
+                case I48:
+                    if (s.equals("id")) desplazamiento= desplazamiento(s, EstadosSintactico.I68);
+                    break;
 
-                    case I49:
-                        if (s.equals("for") || s.equals("function") || s.equals("if")
-                                || s.equals("let") || s.equals("read") || s.equals("return")
-                                || s.equals("write") || s.equals("id") || s.equals("$")) {
-                            reduccion(s, Reglas.R22);
-                        }
-                        break;
+                case I49:
+                    if (s.equals("for") || s.equals("function") || s.equals("if")
+                            || s.equals("let") || s.equals("read") || s.equals("return")
+                            || s.equals("write") || s.equals("id") || s.equals("$")) {
+                        reduccion(s, Reglas.R22);
+                    }
+                    break;
 
-                    case I50:
-                        if (s.equals("id")) desplazamiento = desplazamiento(s, EstadosSintactico.I121);
-                        else if (s.equals("entero")) desplazamiento = desplazamiento(s, EstadosSintactico.I122);
-                        else if (s.equals("real")) desplazamiento = desplazamiento(s, EstadosSintactico.I123);
-                        else if (s.equals("cadena")) desplazamiento = desplazamiento(s, EstadosSintactico.I124);
-                        else if (s.equals("(")) desplazamiento = desplazamiento(s, EstadosSintactico.I125);
-                        else if (s.equals("!")) desplazamiento = desplazamiento(s, EstadosSintactico.I126);
-                        else if (s.equals(")")) {
-                            reduccion(s, Reglas.R25);
-                        }
-                        break;
+                case I50:
+                    if (s.equals("id")) desplazamiento = desplazamiento(s, EstadosSintactico.I121);
+                    else if (s.equals("entero")) desplazamiento = desplazamiento(s, EstadosSintactico.I122);
+                    else if (s.equals("real")) desplazamiento = desplazamiento(s, EstadosSintactico.I123);
+                    else if (s.equals("cadena")) desplazamiento = desplazamiento(s, EstadosSintactico.I124);
+                    else if (s.equals("(")) desplazamiento = desplazamiento(s, EstadosSintactico.I125);
+                    else if (s.equals("!")) desplazamiento = desplazamiento(s, EstadosSintactico.I126);
+                    else if (s.equals(")")) {
+                        reduccion(s, Reglas.R25);
+                    }
+                    break;
                 case I51:
                     if (s.equals(")")) desplazamiento = desplazamiento(s, EstadosSintactico.I70);
                     break;
@@ -2072,7 +2072,7 @@ public class AnalizadorSintactico {
                     else if (s.equals(")") || s.equals(">")) {
                         reduccion(s, Reglas.R37);
                     }
-                break;
+                    break;
                 case I121:
                     if (s.equals("(")) desplazamiento = desplazamiento(s, EstadosSintactico.I145);
                     else if (s.equals(")") || s.equals(">") || s.equals("-") || s.equals(",")) {

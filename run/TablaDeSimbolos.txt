@@ -2,6 +2,21 @@ TABLA PRINCIPAL #1:
 *LEXEMA: 'a'
 	Atributos:
 	+ Tipo: '-'
+	+ numParam: 0
+	+ TipoParam: '-'
+	+ TipoRetorno: '-'
+	+ EtiqFuncion: '-'
 *LEXEMA: 'b'
 	Atributos:
 	+ Tipo: '-'
+	+ numParam: 0
+	+ TipoParam: '-'
+	+ TipoRetorno: '-'
+	+ EtiqFuncion: '-'
+*LEXEMA: 'acumula'
+	Atributos:
+	+ Tipo: '-'
+	+ numParam: 0
+	+ TipoParam: '-'
+	+ TipoRetorno: 'void'
+	+ EtiqFuncion: 'func_acumula'

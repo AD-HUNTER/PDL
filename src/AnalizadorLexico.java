@@ -1,3 +1,6 @@
+import tslib.TS_Gestor;
+
+import javax.swing.plaf.DesktopIconUI;
 import java.io.BufferedReader;
 import java.io.PushbackReader;
 import java.util.HashMap;
@@ -19,7 +22,13 @@ public class AnalizadorLexico {
     private StringBuilder lexema;
     private Integer valor;
     private int ndecimales;
+    private int numParam;
     private double valorFloat;
+    private boolean zonaFuncion;
+    private boolean zonaDec;
+    private boolean faltanParametros;
+    private int posTSG_de_func;
+    private boolean esUltimoParam;
 
     /*
         private boolean esLetra (char caracter) {
@@ -60,8 +69,12 @@ public class AnalizadorLexico {
         this.digitos = Set.of('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
         this.estadoInicial = "q0";
         this.estadosFinales = Set.of("q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52", "q53","q54");
-
+        this.zonaFuncion = false;
+        this.zonaDec = false;
+        this.faltanParametros = false;
+        this.numParam = 0;
         this.transiciones = new HashMap<>();
+        this.esUltimoParam = false;
         Map<Character, String> q0map = new HashMap<>();
         q0map.put('/', "q1");
         for (Character ch : this.letras) {
@@ -237,15 +250,20 @@ public class AnalizadorLexico {
                 break;
             case "q0->q42":
                 Main.tokens.add(new Token("CierraCorch", "-"));
+                zonaFuncion = false;
                 break;
             case "q0->q43":
                 Main.tokens.add(new Token("AbreCorch", "-"));
+                faltanParametros = false;
                 break;
             case "q0->q44":
                 Main.tokens.add(new Token("AbrePar", "-"));
                 break;
             case "q0->q45":
                 Main.tokens.add(new Token("CierraPar", "-"));
+                if (zonaFuncion && numParam != 0) {
+                    esUltimoParam = true;
+                }
                 break;
             case "q0->q46":
                 Main.tokens.add(new Token("Pcoma", "-"));
@@ -322,13 +340,20 @@ public class AnalizadorLexico {
                 break;
             case "q4->q52":
                 String lex = lexema.toString();
-                if (Main.gestor.getEntradaTPalabrasReservadas(lex)!=0){
+                if (Main.gestor.getEntradaTPalabrasReservadas(lex) != 0) {
+                    // Es palabra reservada
                     switch (lex) {
                         case "boolean" -> Main.tokens.add(new Token("PalRes", "1"));
                         case "for" -> Main.tokens.add(new Token("PalRes", "3"));
-                        case "function" -> Main.tokens.add(new Token("PalRes", "4"));
+                        case "function" -> {
+                            Main.tokens.add(new Token("PalRes", "4"));
+                            zonaFuncion = true;
+                        }
                         case "if" -> Main.tokens.add(new Token("PalRes", "5"));
-                        case "let" -> Main.tokens.add(new Token("PalRes", "7"));
+                        case "let" -> {
+                            Main.tokens.add(new Token("PalRes", "7"));
+                            zonaDec = true;
+                        }
                         case "read" -> Main.tokens.add(new Token("PalRes", "8"));
                         case "write" -> Main.tokens.add(new Token("PalRes", "12"));
                         case "void" -> Main.tokens.add(new Token("PalRes", "11"));
@@ -338,24 +363,107 @@ public class AnalizadorLexico {
                         case "float" -> Main.tokens.add(new Token("PalRes", "2"));
                     }
                 } else {
-                    int posTSG=Main.gestor.getEntradaTSGlobal(lex);
-                    int posTSL=Main.gestor.getEntradaTSLocal(lex);
-                    if (posTSL!=0){
+                    // Es un identificador
+                    int posTSG = Main.gestor.getEntradaTSGlobal(lex);
+
+                    if (zonaFuncion && faltanParametros) {
+                        // Estamos declarando parámetros de una función
+                        Token ultimoToken = Main.tokens.getLast();
+                        if (numParam == 0) {
+                            // Primer parámetro - crear tabla local
+                            posTSG_de_func = Integer.parseInt(Main.tokens.get(Main.tokens.size() - 3).getAtributo());
+                            Main.gestor.createTSLocal();
+                        }
+                        int posTSL = Main.gestor.addEntradaTSLocal(lex);
+                        String tipo = "";
+                        switch (ultimoToken.getAtributo()) {
+                            case "10": tipo = "string"; break;
+                            case "6": tipo = "int"; break;
+                            case "2": tipo = "float"; break;
+                            case "1": tipo = "boolean"; break;
+                        }
+                        Main.gestor.setTipo(posTSL, tipo);
                         Main.tokens.add(new Token("Id", String.valueOf(posTSL)));
-                    }
-                    else if (posTSG!=0){
-                        Main.tokens.add(new Token("Id", String.valueOf(posTSG)));
+                        numParam++;
+
+                    } else if (zonaFuncion && !faltanParametros) {
+                        // Estamos en la declaración de la función (justo después de function tipo)
+                        Token ultimoToken = Main.tokens.getLast();
+                        if (ultimoToken.getAtributo().equals("11") || ultimoToken.getAtributo().equals("10") ||
+                                ultimoToken.getAtributo().equals("6") || ultimoToken.getAtributo().equals("2") ||
+                                ultimoToken.getAtributo().equals("1")) {
+                            // Es el nombre de la función
+                            if (posTSG != 0) {
+                                Main.errores.add(new Error(linea, "SEMANTICO", "Error de declaracion: La funcion '" + lex + "' ya existe en la tabla global."));
+                            } else {
+                                int pos = Main.gestor.addEntradaTSGlobal(lex);  // ← GLOBAL, no LOCAL
+                                Main.tokens.add(new Token("Id", String.valueOf(pos)));
+                                String tipoDev = "";
+                                switch (ultimoToken.getAtributo()) {
+                                    case "11": tipoDev = "void"; break;
+                                    case "10": tipoDev = "string"; faltanParametros = true; break;
+                                    case "6": tipoDev = "int"; faltanParametros = true; break;
+                                    case "2": tipoDev = "float"; faltanParametros = true; break;
+                                    case "1": tipoDev = "boolean"; faltanParametros = true; break;
+                                }
+                                Main.gestor.setTipo(pos, "Funcion");
+                                Main.gestor.setValorAtributoCad(pos, "tipo de retorno", tipoDev);
+                                Main.gestor.setValorAtributoCad(pos, "etiqueta", "func_" + lex);
+                                faltanParametros = true;  // Esperamos parámetros
+                            }
+                        } else {
+                            // Es un ID usado dentro del cuerpo de la función
+                            int pos = Main.gestor.getEntradaTSGlobal(lex);
+                            if (pos == 0) {
+                                Main.errores.add(new Error(linea, "SEMANTICO", "Variable '" + lex + "' no declarada."));
+                                pos = Main.gestor.addEntradaTSGlobal(lex); // añadir para evitar más errores
+                            }
+                            Main.tokens.add(new Token("Id", String.valueOf(pos)));
+                        }
+
+                    } else if (zonaDec) {
+                        // Declaración de variable global con let
+                        Token ultimoToken = Main.tokens.getLast();
+                        if (ultimoToken.getAtributo().equals("10") || ultimoToken.getAtributo().equals("6")
+                                || ultimoToken.getAtributo().equals("2") || ultimoToken.getAtributo().equals("1")) {
+                            if (posTSG != 0) {
+                                Main.errores.add(new Error(linea, "SEMANTICO", "Error de declaracion: La variable '" + lex + "' ya existe en la tabla global."));
+                            } else {
+                                int pos = Main.gestor.addEntradaTSGlobal(lex);  // ← GLOBAL
+                                Main.tokens.add(new Token("Id", String.valueOf(pos)));
+                                String tipo = "";
+                                switch (ultimoToken.getAtributo()) {
+                                    case "10": tipo = "string"; break;
+                                    case "6": tipo = "int"; break;
+                                    case "2": tipo = "float"; break;
+                                    case "1": tipo = "boolean"; break;
+                                }
+                                Main.gestor.setTipo(pos, tipo);
+                            }
+                            zonaDec = false;
+                        } else {
+                            // Uso de variable después de let tipo var; (ej: a = 5;)
+                            int pos = Main.gestor.getEntradaTSGlobal(lex);
+                            if (pos == 0) {
+                                Main.errores.add(new Error(linea, "SEMANTICO", "Variable '" + lex + "' no declarada."));
+                                pos = Main.gestor.addEntradaTSGlobal(lex);
+                            }
+                            Main.tokens.add(new Token("Id", String.valueOf(pos)));
+                        }
+
                     } else {
-                        if (Main.zonaFuncion){
-                            Main.tokens.add(new Token("Id", String.valueOf(Main.gestor.addEntradaTSLocal(lex))));
+                        // Uso normal de un ID (fuera de declaraciones)
+                        int pos = Main.gestor.getEntradaTSGlobal(lex);
+                        if (pos == 0) {
+                            Main.errores.add(new Error(linea, "SEMANTICO", "Variable '" + lex + "' no declarada."));
+                            pos = Main.gestor.addEntradaTSGlobal(lex);
                         }
-                        else{
-                            Main.tokens.add(new Token("Id", String.valueOf(Main.gestor.addEntradaTSGlobal(lex))));
-                        }
+                        Main.tokens.add(new Token("Id", String.valueOf(pos)));
                     }
                 }
                 lexema.setLength(0);
                 break;
+
             default:
                 break;
         }

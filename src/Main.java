@@ -6,7 +6,6 @@ public class Main {
     public static TS_Gestor gestor;
     public static List<Token> tokens = new ArrayList<>();
     public static List<Error> errores = new ArrayList<>();
-    public static boolean zonaFuncion=false;
     private static void escribeFichTokens(List <Token> tokens) {
         // Escribe los tokens en el archivo de salida con el formato.
         try {
@@ -66,12 +65,6 @@ public class Main {
             System.exit(1);
         }
         res=gestor.createAtributo("tipo de parametros", TS_Gestor.DescripcionAtributo.TIPO_PARAM,
-                TS_Gestor.TipoDatoAtributo.LISTA);
-        if(res!=0){
-            System.out.println("Error al definir un atributo.");
-            System.exit(1);
-        }
-        res=gestor.createAtributo("modo de parametros", TS_Gestor.DescripcionAtributo.MODO_PARAM,
                 TS_Gestor.TipoDatoAtributo.LISTA);
         if(res!=0){
             System.out.println("Error al definir un atributo.");
@@ -160,7 +153,7 @@ public class Main {
             parser.end(); // Cerrar los ficheros parse.txt y pasos.txt
             escribeFichErrores(errores);
             java.io.PrintStream outOriginal = System.out;
-            try (java.io.PrintStream outFile = new java.io.PrintStream(new java.io.FileOutputStream("TablaDeSimbolos.txt", false), true, java.nio.charset.StandardCharsets.UTF_8)) {
+            try (java.io.PrintStream outFile = new java.io.PrintStream(new java.io.FileOutputStream("TablaDeSimbolos.txt", true), true, java.nio.charset.StandardCharsets.UTF_8)) {
                 System.setOut(outFile);
                 gestor.show(TS_Gestor.Tabla.GLOBAL);
             } catch (java.io.IOException e) {
@@ -168,6 +161,8 @@ public class Main {
             } finally {
                 System.setOut(outOriginal);
             }
+            // gestor.write(TS_Gestor.Tabla.GLOBAL);
+            // gestor.destroy(TS_Gestor.Tabla.GLOBAL);
             System.out.println("El fichero fue procesado correctamente.");
             System.exit(0);
         } catch (Exception e) {

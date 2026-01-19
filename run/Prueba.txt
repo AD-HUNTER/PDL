@@ -4,6 +4,8 @@ function void acumula ( int a, float b) {
 a += b;
 return a;
 }
-function int main (void) {
+function int main (int g, int h) {
+    let int e;
+    let float f;
     acumula(e,f);
 }

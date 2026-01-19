@@ -7,6 +7,18 @@ TABLA LOCAL #2:
 	+ Tipo: 'real'
 ----------------------------------------
 TABLA LOCAL #3:
+*LEXEMA: 'g'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'h'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'e'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'f'
+	Atributos:
+	+ Tipo: 'real'
 ----------------------------------------
 TABLA PRINCIPAL #1:
 *LEXEMA: 'a'
@@ -26,8 +38,8 @@ TABLA PRINCIPAL #1:
 *LEXEMA: 'main'
 	Atributos:
 	+ Tipo: 'funcion'
-	+ numParam: 0
-	+ TipoParam: '-'
+	+ numParam: 2
+	+ TipoParam0: 'entero'
+	+ TipoParam1: 'entero'
 	+ TipoRetorno: 'entero'
 	+ EtiqFuncion: 'func_main'
-

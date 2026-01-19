@@ -29,14 +29,26 @@
  < PalRes , 6 > 
  < Id , 4 > 
  < AbrePar , - > 
- < PalRes , 11 > 
+ < PalRes , 6 > 
+ < Id , -1 > 
+ < Coma , - > 
+ < PalRes , 6 > 
+ < Id , -2 > 
  < CierraPar , - > 
  < AbreCorch , - > 
+ < PalRes , 7 > 
+ < PalRes , 6 > 
+ < Id , -3 > 
+ < Pcoma , - > 
+ < PalRes , 7 > 
+ < PalRes , 2 > 
+ < Id , -4 > 
+ < Pcoma , - > 
  < Id , 3 > 
  < AbrePar , - > 
- < Id , 0 > 
+ < Id , -3 > 
  < Coma , - > 
- < Id , 0 > 
+ < Id , -4 > 
  < CierraPar , - > 
  < Pcoma , - > 
  < CierraCorch , - > 

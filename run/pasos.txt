@@ -457,14 +457,66 @@ I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46,
 desplazamiento ( al estado I65
 
 
-void
+int
 I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, 
-desplazamiento void al estado I80
+desplazamiento int al estado I17
+
+
+id
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, int, I17, 
+reduccion R14
+
+
+desplazamiento T al estado I81
+
+
+id
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, 
+desplazamiento id al estado I92
+
+
+,
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, I92, 
+desplazamiento , al estado I99
+
+
+int
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, I92, ,, I99, 
+desplazamiento int al estado I17
+
+
+id
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, I92, ,, I99, int, I17, 
+reduccion R14
+
+
+desplazamiento T al estado I106
+
+
+id
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, I92, ,, I99, T, I106, 
+desplazamiento id al estado I110
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, void, I80, 
-reduccion R50
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, I92, ,, I99, T, I106, id, I110, 
+reduccion R52
+
+
+desplazamiento K al estado I111
+
+
+)
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, I92, ,, I99, T, I106, id, I110, K, I111, 
+reduccion R51
+
+
+desplazamiento K al estado I100
+
+
+)
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, I92, K, I100, 
+reduccion R49
 
 
 desplazamiento A al estado I82
@@ -488,23 +540,111 @@ I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66,
 desplazamiento { al estado I83
 
 
-id
+let
 I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, 
+desplazamiento let al estado I132
+
+
+int
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, let, I132, 
+reduccion R13
+
+
+desplazamiento M al estado I154
+
+
+int
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, let, I132, M, I154, 
+desplazamiento int al estado I17
+
+
+id
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, let, I132, M, I154, int, I17, 
+reduccion R14
+
+
+desplazamiento T al estado I171
+
+
+id
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, let, I132, M, I154, T, I171, 
+desplazamiento id al estado I186
+
+
+;
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, let, I132, M, I154, T, I171, id, I186, 
+desplazamiento ; al estado I192
+
+
+let
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, let, I132, M, I154, T, I171, id, I186, ;, I192, 
+reduccion R5
+
+
+desplazamiento B al estado I94
+
+
+let
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, 
+desplazamiento let al estado I132
+
+
+float
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, let, I132, 
+reduccion R13
+
+
+desplazamiento M al estado I154
+
+
+float
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, let, I132, M, I154, 
+desplazamiento float al estado I16
+
+
+id
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, let, I132, M, I154, float, I16, 
+reduccion R15
+
+
+desplazamiento T al estado I171
+
+
+id
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, let, I132, M, I154, T, I171, 
+desplazamiento id al estado I186
+
+
+;
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, let, I132, M, I154, T, I171, id, I186, 
+desplazamiento ; al estado I192
+
+
+id
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, let, I132, M, I154, T, I171, id, I186, ;, I192, 
+reduccion R5
+
+
+desplazamiento B al estado I94
+
+
+id
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, 
 desplazamiento id al estado I136
 
 
 (
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, 
 desplazamiento ( al estado I160
 
 
 id
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, 
 desplazamiento id al estado I121
 
 
 ,
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, id, I121, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, id, I121, 
 reduccion R38
 
 
@@ -512,7 +652,7 @@ desplazamiento V al estado I129
 
 
 ,
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, V, I129, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, V, I129, 
 reduccion R37
 
 
@@ -520,7 +660,7 @@ desplazamiento U1 al estado I151
 
 
 ,
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, V, I129, U1, I151, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, V, I129, U1, I151, 
 reduccion R35
 
 
@@ -528,7 +668,7 @@ desplazamiento U al estado I128
 
 
 ,
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, U, I128, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, U, I128, 
 reduccion R34
 
 
@@ -536,7 +676,7 @@ desplazamiento R al estado I127
 
 
 ,
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, R, I127, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, R, I127, 
 reduccion R32
 
 
@@ -544,7 +684,7 @@ desplazamiento E1 al estado I149
 
 
 ,
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, R, I127, E1, I149, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, R, I127, E1, I149, 
 reduccion R30
 
 
@@ -552,17 +692,17 @@ desplazamiento E al estado I62
 
 
 ,
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, 
 desplazamiento , al estado I76
 
 
 id
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, ,, I76, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, ,, I76, 
 desplazamiento id al estado I121
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, ,, I76, id, I121, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, ,, I76, id, I121, 
 reduccion R38
 
 
@@ -570,7 +710,7 @@ desplazamiento V al estado I129
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, ,, I76, V, I129, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, ,, I76, V, I129, 
 reduccion R37
 
 
@@ -578,7 +718,7 @@ desplazamiento U1 al estado I151
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, ,, I76, V, I129, U1, I151, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, ,, I76, V, I129, U1, I151, 
 reduccion R35
 
 
@@ -586,7 +726,7 @@ desplazamiento U al estado I128
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, ,, I76, U, I128, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, ,, I76, U, I128, 
 reduccion R34
 
 
@@ -594,7 +734,7 @@ desplazamiento R al estado I127
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, ,, I76, R, I127, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, ,, I76, R, I127, 
 reduccion R32
 
 
@@ -602,7 +742,7 @@ desplazamiento E1 al estado I149
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, ,, I76, R, I127, E1, I149, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, ,, I76, R, I127, E1, I149, 
 reduccion R30
 
 
@@ -610,7 +750,7 @@ desplazamiento E al estado I90
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, ,, I76, E, I90, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, ,, I76, E, I90, 
 reduccion R27
 
 
@@ -618,7 +758,7 @@ desplazamiento Q al estado I96
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, ,, I76, E, I90, Q, I96, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, ,, I76, E, I90, Q, I96, 
 reduccion R26
 
 
@@ -626,7 +766,7 @@ desplazamiento Q al estado I77
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, E, I62, Q, I77, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, E, I62, Q, I77, 
 reduccion R24
 
 
@@ -634,17 +774,17 @@ desplazamiento L al estado I177
 
 
 )
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, L, I177, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, L, I177, 
 desplazamiento ) al estado I189
 
 
 ;
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, L, I177, ), I189, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, L, I177, ), I189, 
 desplazamiento ; al estado I193
 
 
 }
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, id, I136, (, I160, L, I177, ), I189, ;, I193, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, id, I136, (, I160, L, I177, ), I189, ;, I193, 
 reduccion R20
 
 
@@ -652,7 +792,7 @@ desplazamiento S al estado I137
 
 
 }
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, S, I137, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, S, I137, 
 reduccion R7
 
 
@@ -660,8 +800,24 @@ desplazamiento B al estado I94
 
 
 }
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, 
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, B, I94, 
 reduccion R54
+
+
+desplazamiento C al estado I101
+
+
+}
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, B, I94, C, I101, 
+reduccion R53
+
+
+desplazamiento C al estado I101
+
+
+}
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, F3, I66, {, I83, B, I94, B, I94, C, I101, 
+reduccion R53
 
 
 desplazamiento C al estado I101

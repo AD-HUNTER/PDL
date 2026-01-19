@@ -1,3 +1,1 @@
-Linea 8 SEMANTICO: Variable 'e' no declarada.
-Linea 8 SEMANTICO: Variable 'f' no declarada.
-Numero de errores: 2.
+No se han encontrado errores.

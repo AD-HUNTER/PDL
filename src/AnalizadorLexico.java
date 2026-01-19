@@ -256,8 +256,8 @@ public class AnalizadorLexico {
                 break;
             case "q0->q42":
                 Main.tokens.add(new Token("CierraCorch", "-"));
-                // Guardar tabla local en fichero antes de destruirla
-                if (zonaFuncion) {
+                // Guardar tabla local en fichero antes de destruirla, SOLO si existe
+                if (zonaFuncion && tablaLocalCreada) {
                     java.io.PrintStream outOriginal = System.out;
                     try (java.io.PrintStream outFile = new java.io.PrintStream(
                             new java.io.FileOutputStream("C:/Users/asack/Documents/Grado/PDL/Proyecto/run/TablaDeSimbolos.txt", !primeraEscrituraTS),
@@ -277,16 +277,12 @@ public class AnalizadorLexico {
                 zonaFuncion = false;
                 break;
 
-
             case "q0->q43":
                 Main.tokens.add(new Token("AbreCorch", "-"));
                 faltanParametros = false;
-                // Si estamos en una función y no existe tabla local, crearla
-                if (zonaFuncion && !tablaLocalCreada) {
-                    Main.gestor.createTSLocal();
-                    tablaLocalCreada = true;
-                }
+                // NO crear tabla local aquí, se creará solo si se declara una variable local
                 break;
+
             case "q0->q44":
                 Main.tokens.add(new Token("AbrePar", "-"));
                 break;
@@ -455,6 +451,11 @@ public class AnalizadorLexico {
 
                             if (zonaFuncion) {
                                 // Declaración de variable LOCAL dentro de una función
+                                // Crear tabla local si no existe
+                                if (!tablaLocalCreada) {
+                                    Main.gestor.createTSLocal();
+                                    tablaLocalCreada = true;
+                                }
                                 int posLocal = Main.gestor.getEntradaTSLocal(lex);
                                 if (posLocal != 0) {
                                     Main.errores.add(new Error(linea, "SEMANTICO", "Error de declaracion: La variable '" + lex + "' ya existe en la tabla local."));
@@ -463,7 +464,8 @@ public class AnalizadorLexico {
                                     Main.tokens.add(new Token("Id", String.valueOf(pos)));
                                     Main.gestor.setTipo(pos, tipo);
                                 }
-                            } else {
+                            }
+                            else {
                                 // Declaración de variable GLOBAL fuera de funciones
                                 if (posTSG != 0) {
                                     Main.errores.add(new Error(linea, "SEMANTICO", "Error de declaracion: La variable '" + lex + "' ya existe en la tabla global."));

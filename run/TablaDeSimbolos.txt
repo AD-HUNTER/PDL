@@ -1,22 +1,33 @@
+TABLA LOCAL #2:
+*LEXEMA: 'a'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'b'
+	Atributos:
+	+ Tipo: 'real'
+----------------------------------------
+TABLA LOCAL #3:
+----------------------------------------
 TABLA PRINCIPAL #1:
 *LEXEMA: 'a'
 	Atributos:
-	+ Tipo: '-'
-	+ numParam: 0
-	+ TipoParam: '-'
-	+ TipoRetorno: '-'
-	+ EtiqFuncion: '-'
+	+ Tipo: 'entero'
 *LEXEMA: 'b'
 	Atributos:
-	+ Tipo: '-'
-	+ numParam: 0
-	+ TipoParam: '-'
-	+ TipoRetorno: '-'
-	+ EtiqFuncion: '-'
+	+ Tipo: 'real'
 *LEXEMA: 'acumula'
 	Atributos:
-	+ Tipo: '-'
-	+ numParam: 0
-	+ TipoParam: '-'
+	+ Tipo: 'funcion'
+	+ numParam: 2
+	+ TipoParam0: 'entero'
+	+ TipoParam1: 'real'
 	+ TipoRetorno: 'void'
 	+ EtiqFuncion: 'func_acumula'
+*LEXEMA: 'main'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 0
+	+ TipoParam: '-'
+	+ TipoRetorno: 'entero'
+	+ EtiqFuncion: 'func_main'
+

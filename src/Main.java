@@ -53,11 +53,6 @@ public class Main {
     }
     private static void agregarAtributos(){
         int res;
-        res=gestor.createAtributo("desp", TS_Gestor.DescripcionAtributo.DIR, TS_Gestor.TipoDatoAtributo.ENTERO);
-        if(res!=0){
-            System.out.println("Error al definir un atributo.");
-            System.exit(1);
-        }
         res=gestor.createAtributo("numero de parametros", TS_Gestor.DescripcionAtributo.NUM_PARAM,
                 TS_Gestor.TipoDatoAtributo.ENTERO);
         if(res!=0){
@@ -77,11 +72,6 @@ public class Main {
             System.exit(1);
         }
         res=gestor.createAtributo("etiqueta", TS_Gestor.DescripcionAtributo.ETIQUETA, TS_Gestor.TipoDatoAtributo.CADENA);
-        if(res!=0){
-            System.out.println("Error al definir un atributo.");
-            System.exit(1);
-        }
-        res=gestor.createAtributo("parametro", TS_Gestor.DescripcionAtributo.PARAM, TS_Gestor.TipoDatoAtributo.ENTERO);
         if(res!=0){
             System.out.println("Error al definir un atributo.");
             System.exit(1);
@@ -126,7 +116,7 @@ public class Main {
         // Creamos un nuevo procesador de lenguaje
         AnalizadorLexico lexico = new AnalizadorLexico();
         gestor = new TS_Gestor("Tabla de Simbolos.txt");
-        gestor.activarDebug();
+        //gestor.activarDebug();
         agregarAtributos();
         gestor.createTPalabrasReservadas();
         gestor.createTSGlobal();

@@ -1,0 +1,49 @@
+let
+I0, 
+desplazamiento let al estado I4
+
+
+int
+I0, let, I4, 
+reduccion R13
+
+
+desplazamiento M al estado I23
+
+
+int
+I0, let, I4, M, I23, 
+desplazamiento int al estado I17
+
+
+id
+I0, let, I4, M, I23, int, I17, 
+reduccion R14
+
+
+desplazamiento T al estado I48
+
+
+id
+I0, let, I4, M, I23, T, I48, 
+desplazamiento id al estado I68
+
+
+;
+I0, let, I4, M, I23, T, I48, id, I68, 
+desplazamiento ; al estado I85
+
+
+$
+I0, let, I4, M, I23, T, I48, id, I68, ;, I85, 
+reduccion R5
+
+
+desplazamiento B al estado I11
+
+
+$
+I0, B, I11, 
+desplazamiento $ al estado I9
+
+

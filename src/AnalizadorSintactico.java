@@ -184,8 +184,8 @@ public class AnalizadorSintactico {
         EstadosSintactico e;
         String antecedente = "";
         EstadosSintactico f;
-        String aux = numRegla(r) + " ";
-        parser.write(aux);
+        String regla = numRegla(r) + " ";
+        parser.write(regla);
 
         for(int i = 0; i < j; i++) {
             pila.pop();//estado

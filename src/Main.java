@@ -1,16 +1,12 @@
 import tslib.TS_Gestor;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
 public class Main {
-
     public static TS_Gestor gestor;
     public static List<Token> tokens = new ArrayList<>();
     public static List<Error> errores = new ArrayList<>();
     public static boolean zonaFuncion=false;
-
     private static void escribeFichTokens(List <Token> tokens) {
         // Escribe los tokens en el archivo de salida con el formato.
         try {
@@ -24,11 +20,9 @@ public class Main {
                     escritor.append(" < " + token.getCodigo() + " , ");
                     // Escribir el atributo si existe
                     if (token.getAtributo() != null) {
-                        //escritor.append("[");
                         escritor.append(token.getAtributo());
-                        //escritor.append("]");
                     }
-                    // Agregar delimitador después del token y un salto de línea
+                    // Agregar delimitador despues del token y un salto de linea
                     escritor.append(" > \n");
                 }
                 escritor.close();
@@ -37,7 +31,6 @@ public class Main {
             e.printStackTrace();
         }
     }
-
     private static void escribeFichErrores(List <Error> errores) {
         // Escribe los errores en el archivo de salida.
         try {
@@ -59,27 +52,26 @@ public class Main {
             e.printStackTrace();
         }
     }
-
-    private  static void añadirAtributos(){
+    private static void agregarAtributos(){
         int res;
         res=gestor.createAtributo("desp", TS_Gestor.DescripcionAtributo.DIR, TS_Gestor.TipoDatoAtributo.ENTERO);
         if(res!=0){
             System.out.println("Error al definir un atributo.");
             System.exit(1);
         }
-        res=gestor.createAtributo("número de parámetros", TS_Gestor.DescripcionAtributo.NUM_PARAM,
+        res=gestor.createAtributo("numero de parametros", TS_Gestor.DescripcionAtributo.NUM_PARAM,
                 TS_Gestor.TipoDatoAtributo.ENTERO);
         if(res!=0){
             System.out.println("Error al definir un atributo.");
             System.exit(1);
         }
-        res=gestor.createAtributo("tipo de parámetros", TS_Gestor.DescripcionAtributo.TIPO_PARAM,
+        res=gestor.createAtributo("tipo de parametros", TS_Gestor.DescripcionAtributo.TIPO_PARAM,
                 TS_Gestor.TipoDatoAtributo.LISTA);
         if(res!=0){
             System.out.println("Error al definir un atributo.");
             System.exit(1);
         }
-        res=gestor.createAtributo("modo de parámetros", TS_Gestor.DescripcionAtributo.MODO_PARAM,
+        res=gestor.createAtributo("modo de parametros", TS_Gestor.DescripcionAtributo.MODO_PARAM,
                 TS_Gestor.TipoDatoAtributo.LISTA);
         if(res!=0){
             System.out.println("Error al definir un atributo.");
@@ -96,12 +88,12 @@ public class Main {
             System.out.println("Error al definir un atributo.");
             System.exit(1);
         }
-        res=gestor.createAtributo("parámetro", TS_Gestor.DescripcionAtributo.PARAM, TS_Gestor.TipoDatoAtributo.ENTERO);
+        res=gestor.createAtributo("parametro", TS_Gestor.DescripcionAtributo.PARAM, TS_Gestor.TipoDatoAtributo.ENTERO);
         if(res!=0){
             System.out.println("Error al definir un atributo.");
             System.exit(1);
         }
-        res=gestor.createAtributo("dimensión", TS_Gestor.DescripcionAtributo.OTROS, TS_Gestor.TipoDatoAtributo.ENTERO);
+        res=gestor.createAtributo("dimension", TS_Gestor.DescripcionAtributo.OTROS, TS_Gestor.TipoDatoAtributo.ENTERO);
         if(res!=0){
             System.out.println("Error al definir un atributo.");
             System.exit(1);
@@ -112,9 +104,7 @@ public class Main {
             System.exit(1);
         }
     }
-
     public static void main(String[] args) throws FileNotFoundException {
-
         String fichEntrada = null; // Fichero de entrada.
         //Comprobamos que se ha pasado un fichero valido
         if(args.length == 1) {
@@ -144,7 +134,7 @@ public class Main {
         AnalizadorLexico lexico = new AnalizadorLexico();
         gestor = new TS_Gestor("Tabla de Simbolos.txt");
         gestor.activarDebug();
-        añadirAtributos();
+        agregarAtributos();
         gestor.createTPalabrasReservadas();
         gestor.createTSGlobal();
         gestor.addEntradaTPalabrasReservadas("boolean");
@@ -160,15 +150,14 @@ public class Main {
         gestor.addEntradaTPalabrasReservadas("read");
         gestor.addEntradaTPalabrasReservadas("write");
         AnalizadorSintactico parser = new AnalizadorSintactico("C:/Users/asack/Documents/Grado/PDL/Proyecto/run/parse.txt");
-
         // Llamamos al procesador con el fichero de entrada y tratamos errores.
         try {
-
             lexico.procesarFichero(fichEntrada);
             escribeFichTokens(tokens);
             for (Token token : tokens) {
                 parser.accion(token);
             }
+            parser.end(); // Cerrar los ficheros parse.txt y pasos.txt
             escribeFichErrores(errores);
             java.io.PrintStream outOriginal = System.out;
             try (java.io.PrintStream outFile = new java.io.PrintStream(new java.io.FileOutputStream("TablaDeSimbolos.txt", false), true, java.nio.charset.StandardCharsets.UTF_8)) {

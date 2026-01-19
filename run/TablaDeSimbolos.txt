@@ -1,4 +1,7 @@
 TABLA PRINCIPAL #1:
-*LEXEMA: 'miFuncion'
+*LEXEMA: 'a'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'b'
 	Atributos:
 	+ Tipo: '-'

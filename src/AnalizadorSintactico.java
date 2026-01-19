@@ -662,19 +662,19 @@ public class AnalizadorSintactico {
                 i=1;
                 break;
             case R39:
-                i=3;
+                i=1;
                 break;
             case R40:
-                i=4;
+                i=1;
                 break;
             case R41:
                 i=1;
                 break;
             case R42:
-                i=1;
+                i=3;
                 break;
             case R43:
-                i=1;
+                i=4;
                 break;
             case R44:
                 i=7;

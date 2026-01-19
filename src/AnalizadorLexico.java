@@ -47,7 +47,7 @@ public class AnalizadorLexico {
         this.ndecimales = 0;
         this.valorFloat = 0.0;
         this.estados = Set.of("q0", "q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10",
-                "q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52", "q53");
+                "q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52", "q53","q54");
         this.alfabeto = Set.of('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
                 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
                 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '-','_', '=', '!', '>', '.', ',', ';', '(',
@@ -59,7 +59,7 @@ public class AnalizadorLexico {
         this.signos = Set.of('-', '=', '!', '>', ',', ';', '(', ')', '{', '}', '+','"');
         this.digitos = Set.of('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
         this.estadoInicial = "q0";
-        this.estadosFinales = Set.of("q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52");
+        this.estadosFinales = Set.of("q40", "q41", "q42", "q43", "q44", "q45", "q46", "q47", "q48", "q49", "q50", "q51", "q52", "q53","q54");
 
         this.transiciones = new HashMap<>();
         Map<Character, String> q0map = new HashMap<>();
@@ -85,6 +85,8 @@ public class AnalizadorLexico {
         q0map.put('\n', "q0");
         q0map.put('\r', "q0");
         q0map.put('_', "q4");
+        q0map.put('=', "q54");
+        q0map.put('-', "q53");
         this.transiciones.put("q0", q0map);
 
         this.transiciones.put("q1", Map.of('*', "q2"));
@@ -251,6 +253,11 @@ public class AnalizadorLexico {
             case "q0->q47":
                 Main.tokens.add(new Token("Coma", "-"));
                 break;
+            case "q0->q53":
+                Main.tokens.add(new Token("Menos", "-"));
+                break;
+            case "q0->q54":
+                Main.tokens.add(new Token("Igual", "-"));
             case "q0->q7":
                 lexema.setLength(0);
                 break;

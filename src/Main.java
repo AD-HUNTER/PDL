@@ -1,8 +1,6 @@
 import tslib.TS_Gestor;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,7 +113,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         String fichEntrada = null; // Fichero de entrada.
         //Comprobamos que se ha pasado un fichero valido
@@ -144,8 +142,6 @@ public class Main {
         }
         // Creamos un nuevo procesador de lenguaje
         AnalizadorLexico lexico = new AnalizadorLexico();
-        //AnalizadorSintactico parser = new AnalizadorSintactico();
-        //AnalizadorSemantico semantico = new AnalizadorSemantico();
         gestor = new TS_Gestor("Tabla de Simbolos.txt");
         gestor.activarDebug();
         añadirAtributos();
@@ -163,14 +159,26 @@ public class Main {
         gestor.addEntradaTPalabrasReservadas("let");
         gestor.addEntradaTPalabrasReservadas("read");
         gestor.addEntradaTPalabrasReservadas("write");
+        AnalizadorSintactico parser = new AnalizadorSintactico("C:/Users/asack/Documents/Grado/PDL/Proyecto/run/parse.txt");
 
         // Llamamos al procesador con el fichero de entrada y tratamos errores.
         try {
 
             lexico.procesarFichero(fichEntrada);
             escribeFichTokens(tokens);
+            for (Token token : tokens) {
+                parser.accion(token);
+            }
             escribeFichErrores(errores);
-            gestor.write(TS_Gestor.Tabla.GLOBAL);
+            java.io.PrintStream outOriginal = System.out;
+            try (java.io.PrintStream outFile = new java.io.PrintStream(new java.io.FileOutputStream("TablaDeSimbolos.txt", false), true, java.nio.charset.StandardCharsets.UTF_8)) {
+                System.setOut(outFile);
+                gestor.show(TS_Gestor.Tabla.GLOBAL);
+            } catch (java.io.IOException e) {
+                e.printStackTrace(outOriginal);
+            } finally {
+                System.setOut(outOriginal);
+            }
             System.out.println("El fichero fue procesado correctamente.");
             System.exit(0);
         } catch (Exception e) {

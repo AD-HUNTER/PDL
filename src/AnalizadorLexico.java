@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.PushbackReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -169,12 +170,14 @@ public class AnalizadorLexico {
     }
 
     public void procesarFichero(String FichEntrada) throws Exception {
-        BufferedReader lector = new BufferedReader(new FileReader(FichEntrada));
+        PushbackReader lector = new PushbackReader(new BufferedReader(new FileReader(FichEntrada)));
         String estadoActual = estadoInicial;
         String siguienteEstado = null;
         int caracter;
         int linea = 1;
         char charAscii;
+        // Estados finales que requieren devolver el caracter al flujo
+        Set<String> estadosConPushback = Set.of("q50", "q51", "q52");
         while ((caracter = lector.read()) != -1) {
             charAscii = (char) caracter;
             if (charAscii == '\n') {
@@ -205,6 +208,14 @@ public class AnalizadorLexico {
             accionesSemanticas(estadoActual, siguienteEstado, charAscii, linea);
             estadoActual = siguienteEstado;
             if (estadosFinales.contains(estadoActual)) {
+                // Si el estado final requiere pushback, devolver el caracter al flujo
+                if (estadosConPushback.contains(estadoActual)) {
+                    lector.unread(caracter);
+                    // Si era un salto de linea, decrementar el contador
+                    if (charAscii == '\n') {
+                        linea--;
+                    }
+                }
                 estadoActual = estadoInicial;
             }
         }

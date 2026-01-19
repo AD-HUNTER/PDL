@@ -1,0 +1,2361 @@
+Grammar
+
+    0 $accept: P $end
+
+    1 P: B P
+    2  | F P
+    3  | EOF
+
+    4 B: IF ABREPAR E CIERRAPAR S
+    5  | LET M T ID PCOMA
+    6  | FOR ABREPAR G1 PCOMA E PCOMA G2 CIERRAPAR S
+    7  | S
+
+    8 G1: ID IGUAL E
+    9   | ε
+
+   10 G2: ID IGUAL E
+   11   | ID INC E
+   12   | ε
+
+   13 M: ε
+
+   14 T: INT
+   15  | FLOAT
+   16  | BOOLEAN
+   17  | STRING
+
+   18 S: ID IGUAL E PCOMA
+   19  | ID INC E PCOMA
+   20  | ID ABREPAR L CIERRAPAR PCOMA
+   21  | WRITE E PCOMA
+   22  | READ ID PCOMA
+   23  | RETURN X PCOMA
+
+   24 L: E Q
+   25  | ε
+
+   26 Q: COMA E Q
+   27  | ε
+
+   28 X: E
+   29  | ε
+
+   30 E: R E1
+
+   31 E1: MAYOR R E1
+   32   | ε
+
+   33 R: NOT R
+   34  | U
+
+   35 U: V U1
+
+   36 U1: MENOS V U1
+   37   | ε
+
+   38 V: ID
+   39  | ENTERO
+   40  | REAL
+   41  | CAD
+   42  | ABREPAR E CIERRAPAR
+   43  | ID ABREPAR L CIERRAPAR
+
+   44 F: FUNCTION F1 F2 F3 ABRECORCH C CIERRACORCH
+
+   45 F1: T
+   46   | VOID
+
+   47 F2: ID
+
+   48 F3: ABREPAR A CIERRAPAR
+
+   49 A: T ID K
+   50  | VOID
+
+   51 K: COMA T ID K
+   52  | ε
+
+   53 C: B C
+   54  | ε
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256)
+    BOOLEAN (258) 16
+    FLOAT (259) 15
+    FOR (260) 6
+    FUNCTION (261) 44
+    IF (262) 4
+    INT (263) 14
+    LET (264) 5
+    READ (265) 22
+    RETURN (266) 23
+    STRING (267) 17
+    VOID (268) 46 50
+    WRITE (269) 21
+    ID (270) 5 8 10 11 18 19 20 22 38 43 47 49 51
+    ENTERO (271) 39
+    REAL (272) 40
+    CAD (273) 41
+    INC (274) 11 19
+    IGUAL (275) 8 10 18
+    COMA (276) 26 51
+    PCOMA (277) 5 6 18 19 20 21 22 23
+    ABREPAR (278) 4 6 20 42 43 48
+    CIERRAPAR (279) 4 6 20 42 43 48
+    ABRECORCH (280) 44
+    CIERRACORCH (281) 44
+    MENOS (282) 36
+    NOT (283) 33
+    MAYOR (284) 31
+    EOF (285) 3
+
+
+Nonterminals, with rules where they appear
+
+    $accept (31)
+        on left: 0
+    P (32)
+        on left: 1 2 3
+        on right: 0 1 2
+    B (33)
+        on left: 4 5 6 7
+        on right: 1 53
+    G1 (34)
+        on left: 8 9
+        on right: 6
+    G2 (35)
+        on left: 10 11 12
+        on right: 6
+    M (36)
+        on left: 13
+        on right: 5
+    T (37)
+        on left: 14 15 16 17
+        on right: 5 45 49 51
+    S (38)
+        on left: 18 19 20 21 22 23
+        on right: 4 6 7
+    L (39)
+        on left: 24 25
+        on right: 20 43
+    Q (40)
+        on left: 26 27
+        on right: 24 26
+    X (41)
+        on left: 28 29
+        on right: 23
+    E (42)
+        on left: 30
+        on right: 4 6 8 10 11 18 19 21 24 26 28 42
+    E1 (43)
+        on left: 31 32
+        on right: 30 31
+    R (44)
+        on left: 33 34
+        on right: 30 31 33
+    U (45)
+        on left: 35
+        on right: 34
+    U1 (46)
+        on left: 36 37
+        on right: 35 36
+    V (47)
+        on left: 38 39 40 41 42 43
+        on right: 35 36
+    F (48)
+        on left: 44
+        on right: 2
+    F1 (49)
+        on left: 45 46
+        on right: 44
+    F2 (50)
+        on left: 47
+        on right: 44
+    F3 (51)
+        on left: 48
+        on right: 44
+    A (52)
+        on left: 49 50
+        on right: 48
+    K (53)
+        on left: 51 52
+        on right: 49 51
+    C (54)
+        on left: 53 54
+        on right: 44 53
+
+
+State 0
+
+    0 $accept: • P $end
+
+    FOR       shift, and go to state 1
+    FUNCTION  shift, and go to state 2
+    IF        shift, and go to state 3
+    LET       shift, and go to state 4
+    READ      shift, and go to state 5
+    RETURN    shift, and go to state 6
+    WRITE     shift, and go to state 7
+    ID        shift, and go to state 8
+    EOF       shift, and go to state 9
+
+    P  go to state 10
+    B  go to state 11
+    S  go to state 12
+    F  go to state 13
+
+
+State 1
+
+    6 B: FOR • ABREPAR G1 PCOMA E PCOMA G2 CIERRAPAR S
+
+    ABREPAR  shift, and go to state 14
+
+
+State 2
+
+   44 F: FUNCTION • F1 F2 F3 ABRECORCH C CIERRACORCH
+
+    BOOLEAN  shift, and go to state 15
+    FLOAT    shift, and go to state 16
+    INT      shift, and go to state 17
+    STRING   shift, and go to state 18
+    VOID     shift, and go to state 19
+
+    T   go to state 20
+    F1  go to state 21
+
+
+State 3
+
+    4 B: IF • ABREPAR E CIERRAPAR S
+
+    ABREPAR  shift, and go to state 22
+
+
+State 4
+
+    5 B: LET • M T ID PCOMA
+
+    BOOLEAN  reduce using rule 13 (M)
+    FLOAT    reduce using rule 13 (M)
+    INT      reduce using rule 13 (M)
+    STRING   reduce using rule 13 (M)
+
+    M  go to state 23
+
+
+State 5
+
+   22 S: READ • ID PCOMA
+
+    ID  shift, and go to state 24
+
+
+State 6
+
+   23 S: RETURN • X PCOMA
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    PCOMA  reduce using rule 29 (X)
+
+    X  go to state 31
+    E  go to state 32
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 7
+
+   21 S: WRITE • E PCOMA
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    E  go to state 36
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 8
+
+   18 S: ID • IGUAL E PCOMA
+   19  | ID • INC E PCOMA
+   20  | ID • ABREPAR L CIERRAPAR PCOMA
+
+    INC      shift, and go to state 37
+    IGUAL    shift, and go to state 38
+    ABREPAR  shift, and go to state 39
+
+
+State 9
+
+    3 P: EOF •
+
+    $end  reduce using rule 3 (P)
+
+
+State 10
+
+    0 $accept: P • $end
+
+    $end  shift, and go to state 40
+
+
+State 11
+
+    1 P: B • P
+
+    FOR       shift, and go to state 1
+    FUNCTION  shift, and go to state 2
+    IF        shift, and go to state 3
+    LET       shift, and go to state 4
+    READ      shift, and go to state 5
+    RETURN    shift, and go to state 6
+    WRITE     shift, and go to state 7
+    ID        shift, and go to state 8
+    EOF       shift, and go to state 9
+
+    P  go to state 41
+    B  go to state 11
+    S  go to state 12
+    F  go to state 13
+
+
+State 12
+
+    7 B: S •
+
+    FOR       reduce using rule 7 (B)
+    FUNCTION  reduce using rule 7 (B)
+    IF        reduce using rule 7 (B)
+    LET       reduce using rule 7 (B)
+    READ      reduce using rule 7 (B)
+    RETURN    reduce using rule 7 (B)
+    WRITE     reduce using rule 7 (B)
+    ID        reduce using rule 7 (B)
+    EOF       reduce using rule 7 (B)
+
+
+State 13
+
+    2 P: F • P
+
+    FOR       shift, and go to state 1
+    FUNCTION  shift, and go to state 2
+    IF        shift, and go to state 3
+    LET       shift, and go to state 4
+    READ      shift, and go to state 5
+    RETURN    shift, and go to state 6
+    WRITE     shift, and go to state 7
+    ID        shift, and go to state 8
+    EOF       shift, and go to state 9
+
+    P  go to state 42
+    B  go to state 11
+    S  go to state 12
+    F  go to state 13
+
+
+State 14
+
+    6 B: FOR ABREPAR • G1 PCOMA E PCOMA G2 CIERRAPAR S
+
+    ID  shift, and go to state 43
+
+    PCOMA  reduce using rule 9 (G1)
+
+    G1  go to state 44
+
+
+State 15
+
+   16 T: BOOLEAN •
+
+    ID  reduce using rule 16 (T)
+
+
+State 16
+
+   15 T: FLOAT •
+
+    ID  reduce using rule 15 (T)
+
+
+State 17
+
+   14 T: INT •
+
+    ID  reduce using rule 14 (T)
+
+
+State 18
+
+   17 T: STRING •
+
+    ID  reduce using rule 17 (T)
+
+
+State 19
+
+   46 F1: VOID •
+
+    ID  reduce using rule 46 (F1)
+
+
+State 20
+
+   45 F1: T •
+
+    ID  reduce using rule 45 (F1)
+
+
+State 21
+
+   44 F: FUNCTION F1 • F2 F3 ABRECORCH C CIERRACORCH
+
+    ID  shift, and go to state 45
+
+    F2  go to state 46
+
+
+State 22
+
+    4 B: IF ABREPAR • E CIERRAPAR S
+
+    ID       shift, and go to state 112
+    ENTERO   shift, and go to state 113
+    REAL     shift, and go to state 114
+    CAD      shift, and go to state 115
+    ABREPAR  shift, and go to state 116
+    NOT      shift, and go to state 117
+
+    E  go to state 47
+    R  go to state 118
+    U  go to state 119
+    V  go to state 120
+
+
+State 23
+
+    5 B: LET M • T ID PCOMA
+
+    BOOLEAN  shift, and go to state 15
+    FLOAT    shift, and go to state 16
+    INT      shift, and go to state 17
+    STRING   shift, and go to state 18
+
+    T  go to state 48
+
+
+State 24
+
+   22 S: READ ID • PCOMA
+
+    PCOMA  shift, and go to state 49
+
+
+State 25
+
+   38 V: ID •
+   43  | ID • ABREPAR L CIERRAPAR
+
+    ABREPAR  shift, and go to state 50
+
+    PCOMA  reduce using rule 38 (V)
+    MENOS  reduce using rule 38 (V)
+    MAYOR  reduce using rule 38 (V)
+
+
+State 26
+
+   39 V: ENTERO •
+
+    PCOMA  reduce using rule 39 (V)
+    MENOS  reduce using rule 39 (V)
+    MAYOR  reduce using rule 39 (V)
+
+
+State 27
+
+   40 V: REAL •
+
+    PCOMA  reduce using rule 40 (V)
+    MENOS  reduce using rule 40 (V)
+    MAYOR  reduce using rule 40 (V)
+
+
+State 28
+
+   41 V: CAD •
+
+    PCOMA  reduce using rule 41 (V)
+    MENOS  reduce using rule 41 (V)
+    MAYOR  reduce using rule 41 (V)
+
+
+State 29
+
+   42 V: ABREPAR • E CIERRAPAR
+
+    ID       shift, and go to state 112
+    ENTERO   shift, and go to state 113
+    REAL     shift, and go to state 114
+    CAD      shift, and go to state 115
+    ABREPAR  shift, and go to state 116
+    NOT      shift, and go to state 117
+
+    E  go to state 51
+    R  go to state 118
+    U  go to state 119
+    V  go to state 120
+
+
+State 30
+
+   33 R: NOT • R
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    R  go to state 52
+    U  go to state 34
+    V  go to state 35
+
+
+State 31
+
+   23 S: RETURN X • PCOMA
+
+    PCOMA  shift, and go to state 53
+
+
+State 32
+
+   28 X: E •
+
+    PCOMA  reduce using rule 28 (X)
+
+
+State 33
+
+   30 E: R • E1
+
+    MAYOR  shift, and go to state 54
+
+    PCOMA  reduce using rule 32 (E1)
+
+    E1  go to state 55
+
+
+State 34
+
+   34 R: U •
+
+    PCOMA  reduce using rule 34 (R)
+    MAYOR  reduce using rule 34 (R)
+
+
+State 35
+
+   35 U: V • U1
+
+    MENOS  shift, and go to state 56
+
+    PCOMA  reduce using rule 37 (U1)
+    MAYOR  reduce using rule 37 (U1)
+
+    U1  go to state 57
+
+
+State 36
+
+   21 S: WRITE E • PCOMA
+
+    PCOMA  shift, and go to state 58
+
+
+State 37
+
+   19 S: ID INC • E PCOMA
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    E  go to state 59
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 38
+
+   18 S: ID IGUAL • E PCOMA
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    E  go to state 60
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 39
+
+   20 S: ID ABREPAR • L CIERRAPAR PCOMA
+
+    ID       shift, and go to state 121
+    ENTERO   shift, and go to state 122
+    REAL     shift, and go to state 123
+    CAD      shift, and go to state 124
+    ABREPAR  shift, and go to state 125
+    NOT      shift, and go to state 126
+
+    CIERRAPAR  reduce using rule 25 (L)
+
+    L  go to state 61
+    E  go to state 62
+    R  go to state 127
+    U  go to state 128
+    V  go to state 129
+
+
+State 40
+
+    0 $accept: P $end •
+
+    $default  accept
+
+
+State 41
+
+    1 P: B P •
+
+    $end  reduce using rule 1 (P)
+
+
+State 42
+
+    2 P: F P •
+
+    $end  reduce using rule 2 (P)
+
+
+State 43
+
+    8 G1: ID • IGUAL E
+
+    IGUAL  shift, and go to state 63
+
+
+State 44
+
+    6 B: FOR ABREPAR G1 • PCOMA E PCOMA G2 CIERRAPAR S
+
+    PCOMA  shift, and go to state 64
+
+
+State 45
+
+   47 F2: ID •
+
+    ABREPAR  reduce using rule 47 (F2)
+
+
+State 46
+
+   44 F: FUNCTION F1 F2 • F3 ABRECORCH C CIERRACORCH
+
+    ABREPAR  shift, and go to state 65
+
+    F3  go to state 66
+
+
+State 47
+
+    4 B: IF ABREPAR E • CIERRAPAR S
+
+    CIERRAPAR  shift, and go to state 67
+
+
+State 48
+
+    5 B: LET M T • ID PCOMA
+
+    ID  shift, and go to state 68
+
+
+State 49
+
+   22 S: READ ID PCOMA •
+
+    FOR       reduce using rule 22 (S)
+    FUNCTION  reduce using rule 22 (S)
+    IF        reduce using rule 22 (S)
+    LET       reduce using rule 22 (S)
+    READ      reduce using rule 22 (S)
+    RETURN    reduce using rule 22 (S)
+    WRITE     reduce using rule 22 (S)
+    ID        reduce using rule 22 (S)
+    EOF       reduce using rule 22 (S)
+
+
+State 50
+
+   43 V: ID ABREPAR • L CIERRAPAR
+
+    ID       shift, and go to state 121
+    ENTERO   shift, and go to state 122
+    REAL     shift, and go to state 123
+    CAD      shift, and go to state 124
+    ABREPAR  shift, and go to state 125
+    NOT      shift, and go to state 126
+
+    CIERRAPAR  reduce using rule 25 (L)
+
+    L  go to state 69
+    E  go to state 62
+    R  go to state 127
+    U  go to state 128
+    V  go to state 129
+
+
+State 51
+
+   42 V: ABREPAR E • CIERRAPAR
+
+    CIERRAPAR  shift, and go to state 70
+
+
+State 52
+
+   33 R: NOT R •
+
+    PCOMA  reduce using rule 33 (R)
+    MAYOR  reduce using rule 33 (R)
+
+
+State 53
+
+   23 S: RETURN X PCOMA •
+
+    FOR       reduce using rule 23 (S)
+    FUNCTION  reduce using rule 23 (S)
+    IF        reduce using rule 23 (S)
+    LET       reduce using rule 23 (S)
+    READ      reduce using rule 23 (S)
+    RETURN    reduce using rule 23 (S)
+    WRITE     reduce using rule 23 (S)
+    ID        reduce using rule 23 (S)
+    EOF       reduce using rule 23 (S)
+
+
+State 54
+
+   31 E1: MAYOR • R E1
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    R  go to state 71
+    U  go to state 34
+    V  go to state 35
+
+
+State 55
+
+   30 E: R E1 •
+
+    PCOMA  reduce using rule 30 (E)
+
+
+State 56
+
+   36 U1: MENOS • V U1
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+
+    V  go to state 72
+
+
+State 57
+
+   35 U: V U1 •
+
+    PCOMA  reduce using rule 35 (U)
+    MAYOR  reduce using rule 35 (U)
+
+
+State 58
+
+   21 S: WRITE E PCOMA •
+
+    FOR       reduce using rule 21 (S)
+    FUNCTION  reduce using rule 21 (S)
+    IF        reduce using rule 21 (S)
+    LET       reduce using rule 21 (S)
+    READ      reduce using rule 21 (S)
+    RETURN    reduce using rule 21 (S)
+    WRITE     reduce using rule 21 (S)
+    ID        reduce using rule 21 (S)
+    EOF       reduce using rule 21 (S)
+
+
+State 59
+
+   19 S: ID INC E • PCOMA
+
+    PCOMA  shift, and go to state 73
+
+
+State 60
+
+   18 S: ID IGUAL E • PCOMA
+
+    PCOMA  shift, and go to state 74
+
+
+State 61
+
+   20 S: ID ABREPAR L • CIERRAPAR PCOMA
+
+    CIERRAPAR  shift, and go to state 75
+
+
+State 62
+
+   24 L: E • Q
+
+    COMA  shift, and go to state 76
+
+    CIERRAPAR  reduce using rule 27 (Q)
+
+    Q  go to state 77
+
+
+State 63
+
+    8 G1: ID IGUAL • E
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    E  go to state 78
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 64
+
+    6 B: FOR ABREPAR G1 PCOMA • E PCOMA G2 CIERRAPAR S
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    E  go to state 79
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 65
+
+   48 F3: ABREPAR • A CIERRAPAR
+
+    BOOLEAN  shift, and go to state 15
+    FLOAT    shift, and go to state 16
+    INT      shift, and go to state 17
+    STRING   shift, and go to state 18
+    VOID     shift, and go to state 80
+
+    T  go to state 81
+    A  go to state 82
+
+
+State 66
+
+   44 F: FUNCTION F1 F2 F3 • ABRECORCH C CIERRACORCH
+
+    ABRECORCH  shift, and go to state 83
+
+
+State 67
+
+    4 B: IF ABREPAR E CIERRAPAR • S
+
+    READ    shift, and go to state 5
+    RETURN  shift, and go to state 6
+    WRITE   shift, and go to state 7
+    ID      shift, and go to state 8
+
+    S  go to state 84
+
+
+State 68
+
+    5 B: LET M T ID • PCOMA
+
+    PCOMA  shift, and go to state 85
+
+
+State 69
+
+   43 V: ID ABREPAR L • CIERRAPAR
+
+    CIERRAPAR  shift, and go to state 86
+
+
+State 70
+
+   42 V: ABREPAR E CIERRAPAR •
+
+    PCOMA  reduce using rule 42 (V)
+    MENOS  reduce using rule 42 (V)
+    MAYOR  reduce using rule 42 (V)
+
+
+State 71
+
+   31 E1: MAYOR R • E1
+
+    MAYOR  shift, and go to state 54
+
+    PCOMA  reduce using rule 32 (E1)
+
+    E1  go to state 87
+
+
+State 72
+
+   36 U1: MENOS V • U1
+
+    MENOS  shift, and go to state 56
+
+    PCOMA  reduce using rule 37 (U1)
+    MAYOR  reduce using rule 37 (U1)
+
+    U1  go to state 88
+
+
+State 73
+
+   19 S: ID INC E PCOMA •
+
+    FOR       reduce using rule 19 (S)
+    FUNCTION  reduce using rule 19 (S)
+    IF        reduce using rule 19 (S)
+    LET       reduce using rule 19 (S)
+    READ      reduce using rule 19 (S)
+    RETURN    reduce using rule 19 (S)
+    WRITE     reduce using rule 19 (S)
+    ID        reduce using rule 19 (S)
+    EOF       reduce using rule 19 (S)
+
+
+State 74
+
+   18 S: ID IGUAL E PCOMA •
+
+    FOR       reduce using rule 18 (S)
+    FUNCTION  reduce using rule 18 (S)
+    IF        reduce using rule 18 (S)
+    LET       reduce using rule 18 (S)
+    READ      reduce using rule 18 (S)
+    RETURN    reduce using rule 18 (S)
+    WRITE     reduce using rule 18 (S)
+    ID        reduce using rule 18 (S)
+    EOF       reduce using rule 18 (S)
+
+
+State 75
+
+   20 S: ID ABREPAR L CIERRAPAR • PCOMA
+
+    PCOMA  shift, and go to state 89
+
+
+State 76
+
+   26 Q: COMA • E Q
+
+    ID       shift, and go to state 121
+    ENTERO   shift, and go to state 122
+    REAL     shift, and go to state 123
+    CAD      shift, and go to state 124
+    ABREPAR  shift, and go to state 125
+    NOT      shift, and go to state 126
+
+    E  go to state 90
+    R  go to state 127
+    U  go to state 128
+    V  go to state 129
+
+
+State 77
+
+   24 L: E Q •
+
+    CIERRAPAR  reduce using rule 24 (L)
+
+
+State 78
+
+    8 G1: ID IGUAL E •
+
+    PCOMA  reduce using rule 8 (G1)
+
+
+State 79
+
+    6 B: FOR ABREPAR G1 PCOMA E • PCOMA G2 CIERRAPAR S
+
+    PCOMA  shift, and go to state 91
+
+
+State 80
+
+   50 A: VOID •
+
+    CIERRAPAR  reduce using rule 50 (A)
+
+
+State 81
+
+   49 A: T • ID K
+
+    ID  shift, and go to state 92
+
+
+State 82
+
+   48 F3: ABREPAR A • CIERRAPAR
+
+    CIERRAPAR  shift, and go to state 93
+
+
+State 83
+
+   44 F: FUNCTION F1 F2 F3 ABRECORCH • C CIERRACORCH
+
+    FOR     shift, and go to state 130
+    IF      shift, and go to state 131
+    LET     shift, and go to state 132
+    READ    shift, and go to state 133
+    RETURN  shift, and go to state 134
+    WRITE   shift, and go to state 135
+    ID      shift, and go to state 136
+
+    CIERRACORCH  reduce using rule 54 (C)
+
+    B  go to state 94
+    S  go to state 137
+    C  go to state 95
+
+
+State 84
+
+    4 B: IF ABREPAR E CIERRAPAR S •
+
+    FOR       reduce using rule 4 (B)
+    FUNCTION  reduce using rule 4 (B)
+    IF        reduce using rule 4 (B)
+    LET       reduce using rule 4 (B)
+    READ      reduce using rule 4 (B)
+    RETURN    reduce using rule 4 (B)
+    WRITE     reduce using rule 4 (B)
+    ID        reduce using rule 4 (B)
+    EOF       reduce using rule 4 (B)
+
+
+State 85
+
+    5 B: LET M T ID PCOMA •
+
+    FOR       reduce using rule 5 (B)
+    FUNCTION  reduce using rule 5 (B)
+    IF        reduce using rule 5 (B)
+    LET       reduce using rule 5 (B)
+    READ      reduce using rule 5 (B)
+    RETURN    reduce using rule 5 (B)
+    WRITE     reduce using rule 5 (B)
+    ID        reduce using rule 5 (B)
+    EOF       reduce using rule 5 (B)
+
+
+State 86
+
+   43 V: ID ABREPAR L CIERRAPAR •
+
+    PCOMA  reduce using rule 43 (V)
+    MENOS  reduce using rule 43 (V)
+    MAYOR  reduce using rule 43 (V)
+
+
+State 87
+
+   31 E1: MAYOR R E1 •
+
+    PCOMA  reduce using rule 31 (E1)
+
+
+State 88
+
+   36 U1: MENOS V U1 •
+
+    PCOMA  reduce using rule 36 (U1)
+    MAYOR  reduce using rule 36 (U1)
+
+
+State 89
+
+   20 S: ID ABREPAR L CIERRAPAR PCOMA •
+
+    FOR       reduce using rule 20 (S)
+    FUNCTION  reduce using rule 20 (S)
+    IF        reduce using rule 20 (S)
+    LET       reduce using rule 20 (S)
+    READ      reduce using rule 20 (S)
+    RETURN    reduce using rule 20 (S)
+    WRITE     reduce using rule 20 (S)
+    ID        reduce using rule 20 (S)
+    EOF       reduce using rule 20 (S)
+
+
+State 90
+
+   26 Q: COMA E • Q
+
+    COMA  shift, and go to state 76
+
+    CIERRAPAR  reduce using rule 27 (Q)
+
+    Q  go to state 96
+
+
+State 91
+
+    6 B: FOR ABREPAR G1 PCOMA E PCOMA • G2 CIERRAPAR S
+
+    ID  shift, and go to state 97
+
+    CIERRAPAR  reduce using rule 12 (G2)
+
+    G2  go to state 98
+
+
+State 92
+
+   49 A: T ID • K
+
+    COMA  shift, and go to state 99
+
+    CIERRAPAR  reduce using rule 52 (K)
+
+    K  go to state 100
+
+
+State 93
+
+   48 F3: ABREPAR A CIERRAPAR •
+
+    ABRECORCH  reduce using rule 48 (F3)
+
+
+State 94
+
+   53 C: B • C
+
+    FOR     shift, and go to state 130
+    IF      shift, and go to state 131
+    LET     shift, and go to state 132
+    READ    shift, and go to state 133
+    RETURN  shift, and go to state 134
+    WRITE   shift, and go to state 135
+    ID      shift, and go to state 136
+
+    CIERRACORCH  reduce using rule 54 (C)
+
+    B  go to state 94
+    S  go to state 137
+    C  go to state 101
+
+
+State 95
+
+   44 F: FUNCTION F1 F2 F3 ABRECORCH C • CIERRACORCH
+
+    CIERRACORCH  shift, and go to state 102
+
+
+State 96
+
+   26 Q: COMA E Q •
+
+    CIERRAPAR  reduce using rule 26 (Q)
+
+
+State 97
+
+   10 G2: ID • IGUAL E
+   11   | ID • INC E
+
+    INC    shift, and go to state 103
+    IGUAL  shift, and go to state 104
+
+
+State 98
+
+    6 B: FOR ABREPAR G1 PCOMA E PCOMA G2 • CIERRAPAR S
+
+    CIERRAPAR  shift, and go to state 105
+
+
+State 99
+
+   51 K: COMA • T ID K
+
+    BOOLEAN  shift, and go to state 15
+    FLOAT    shift, and go to state 16
+    INT      shift, and go to state 17
+    STRING   shift, and go to state 18
+
+    T  go to state 106
+
+
+State 100
+
+   49 A: T ID K •
+
+    CIERRAPAR  reduce using rule 49 (A)
+
+
+State 101
+
+   53 C: B C •
+
+    CIERRACORCH  reduce using rule 53 (C)
+
+
+State 102
+
+   44 F: FUNCTION F1 F2 F3 ABRECORCH C CIERRACORCH •
+
+    FOR       reduce using rule 44 (F)
+    FUNCTION  reduce using rule 44 (F)
+    IF        reduce using rule 44 (F)
+    LET       reduce using rule 44 (F)
+    READ      reduce using rule 44 (F)
+    RETURN    reduce using rule 44 (F)
+    WRITE     reduce using rule 44 (F)
+    ID        reduce using rule 44 (F)
+    EOF       reduce using rule 44 (F)
+
+
+State 103
+
+   11 G2: ID INC • E
+
+    ID       shift, and go to state 112
+    ENTERO   shift, and go to state 113
+    REAL     shift, and go to state 114
+    CAD      shift, and go to state 115
+    ABREPAR  shift, and go to state 116
+    NOT      shift, and go to state 117
+
+    E  go to state 107
+    R  go to state 118
+    U  go to state 119
+    V  go to state 120
+
+
+State 104
+
+   10 G2: ID IGUAL • E
+
+    ID       shift, and go to state 112
+    ENTERO   shift, and go to state 113
+    REAL     shift, and go to state 114
+    CAD      shift, and go to state 115
+    ABREPAR  shift, and go to state 116
+    NOT      shift, and go to state 117
+
+    E  go to state 108
+    R  go to state 118
+    U  go to state 119
+    V  go to state 120
+
+
+State 105
+
+    6 B: FOR ABREPAR G1 PCOMA E PCOMA G2 CIERRAPAR • S
+
+    READ    shift, and go to state 5
+    RETURN  shift, and go to state 6
+    WRITE   shift, and go to state 7
+    ID      shift, and go to state 8
+
+    S  go to state 109
+
+
+State 106
+
+   51 K: COMA T • ID K
+
+    ID  shift, and go to state 110
+
+
+State 107
+
+   11 G2: ID INC E •
+
+    CIERRAPAR  reduce using rule 11 (G2)
+
+
+State 108
+
+   10 G2: ID IGUAL E •
+
+    CIERRAPAR  reduce using rule 10 (G2)
+
+
+State 109
+
+    6 B: FOR ABREPAR G1 PCOMA E PCOMA G2 CIERRAPAR S •
+
+    FOR       reduce using rule 6 (B)
+    FUNCTION  reduce using rule 6 (B)
+    IF        reduce using rule 6 (B)
+    LET       reduce using rule 6 (B)
+    READ      reduce using rule 6 (B)
+    RETURN    reduce using rule 6 (B)
+    WRITE     reduce using rule 6 (B)
+    ID        reduce using rule 6 (B)
+    EOF       reduce using rule 6 (B)
+
+
+State 110
+
+   51 K: COMA T ID • K
+
+    COMA  shift, and go to state 99
+
+    CIERRAPAR  reduce using rule 52 (K)
+
+    K  go to state 111
+
+
+State 111
+
+   51 K: COMA T ID K •
+
+    CIERRAPAR  reduce using rule 51 (K)
+
+
+State 112
+
+   38 V: ID •
+   43  | ID • ABREPAR L CIERRAPAR
+
+    ABREPAR  shift, and go to state 138
+
+    CIERRAPAR  reduce using rule 38 (V)
+    MENOS      reduce using rule 38 (V)
+    MAYOR      reduce using rule 38 (V)
+
+
+State 113
+
+   39 V: ENTERO •
+
+    CIERRAPAR  reduce using rule 39 (V)
+    MENOS      reduce using rule 39 (V)
+    MAYOR      reduce using rule 39 (V)
+
+
+State 114
+
+   40 V: REAL •
+
+    CIERRAPAR  reduce using rule 40 (V)
+    MENOS      reduce using rule 40 (V)
+    MAYOR      reduce using rule 40 (V)
+
+
+State 115
+
+   41 V: CAD •
+
+    CIERRAPAR  reduce using rule 41 (V)
+    MENOS      reduce using rule 41 (V)
+    MAYOR      reduce using rule 41 (V)
+
+
+State 116
+
+   42 V: ABREPAR • E CIERRAPAR
+
+    ID       shift, and go to state 112
+    ENTERO   shift, and go to state 113
+    REAL     shift, and go to state 114
+    CAD      shift, and go to state 115
+    ABREPAR  shift, and go to state 116
+    NOT      shift, and go to state 117
+
+    E  go to state 139
+    R  go to state 118
+    U  go to state 119
+    V  go to state 120
+
+
+State 117
+
+   33 R: NOT • R
+
+    ID       shift, and go to state 112
+    ENTERO   shift, and go to state 113
+    REAL     shift, and go to state 114
+    CAD      shift, and go to state 115
+    ABREPAR  shift, and go to state 116
+    NOT      shift, and go to state 117
+
+    R  go to state 140
+    U  go to state 119
+    V  go to state 120
+
+
+State 118
+
+   30 E: R • E1
+
+    MAYOR  shift, and go to state 141
+
+    CIERRAPAR  reduce using rule 32 (E1)
+
+    E1  go to state 142
+
+
+State 119
+
+   34 R: U •
+
+    CIERRAPAR  reduce using rule 34 (R)
+    MAYOR      reduce using rule 34 (R)
+
+
+State 120
+
+   35 U: V • U1
+
+    MENOS  shift, and go to state 143
+
+    CIERRAPAR  reduce using rule 37 (U1)
+    MAYOR      reduce using rule 37 (U1)
+
+    U1  go to state 144
+
+
+State 121
+
+   38 V: ID •
+   43  | ID • ABREPAR L CIERRAPAR
+
+    ABREPAR  shift, and go to state 145
+
+    COMA       reduce using rule 38 (V)
+    CIERRAPAR  reduce using rule 38 (V)
+    MENOS      reduce using rule 38 (V)
+    MAYOR      reduce using rule 38 (V)
+
+
+State 122
+
+   39 V: ENTERO •
+
+    COMA       reduce using rule 39 (V)
+    CIERRAPAR  reduce using rule 39 (V)
+    MENOS      reduce using rule 39 (V)
+    MAYOR      reduce using rule 39 (V)
+
+
+State 123
+
+   40 V: REAL •
+
+    COMA       reduce using rule 40 (V)
+    CIERRAPAR  reduce using rule 40 (V)
+    MENOS      reduce using rule 40 (V)
+    MAYOR      reduce using rule 40 (V)
+
+
+State 124
+
+   41 V: CAD •
+
+    COMA       reduce using rule 41 (V)
+    CIERRAPAR  reduce using rule 41 (V)
+    MENOS      reduce using rule 41 (V)
+    MAYOR      reduce using rule 41 (V)
+
+
+State 125
+
+   42 V: ABREPAR • E CIERRAPAR
+
+    ID       shift, and go to state 112
+    ENTERO   shift, and go to state 113
+    REAL     shift, and go to state 114
+    CAD      shift, and go to state 115
+    ABREPAR  shift, and go to state 116
+    NOT      shift, and go to state 117
+
+    E  go to state 146
+    R  go to state 118
+    U  go to state 119
+    V  go to state 120
+
+
+State 126
+
+   33 R: NOT • R
+
+    ID       shift, and go to state 121
+    ENTERO   shift, and go to state 122
+    REAL     shift, and go to state 123
+    CAD      shift, and go to state 124
+    ABREPAR  shift, and go to state 125
+    NOT      shift, and go to state 126
+
+    R  go to state 147
+    U  go to state 128
+    V  go to state 129
+
+
+State 127
+
+   30 E: R • E1
+
+    MAYOR  shift, and go to state 148
+
+    COMA       reduce using rule 32 (E1)
+    CIERRAPAR  reduce using rule 32 (E1)
+
+    E1  go to state 149
+
+
+State 128
+
+   34 R: U •
+
+    COMA       reduce using rule 34 (R)
+    CIERRAPAR  reduce using rule 34 (R)
+    MAYOR      reduce using rule 34 (R)
+
+
+State 129
+
+   35 U: V • U1
+
+    MENOS  shift, and go to state 150
+
+    COMA       reduce using rule 37 (U1)
+    CIERRAPAR  reduce using rule 37 (U1)
+    MAYOR      reduce using rule 37 (U1)
+
+    U1  go to state 151
+
+
+State 130
+
+    6 B: FOR • ABREPAR G1 PCOMA E PCOMA G2 CIERRAPAR S
+
+    ABREPAR  shift, and go to state 152
+
+
+State 131
+
+    4 B: IF • ABREPAR E CIERRAPAR S
+
+    ABREPAR  shift, and go to state 153
+
+
+State 132
+
+    5 B: LET • M T ID PCOMA
+
+    BOOLEAN  reduce using rule 13 (M)
+    FLOAT    reduce using rule 13 (M)
+    INT      reduce using rule 13 (M)
+    STRING   reduce using rule 13 (M)
+
+    M  go to state 154
+
+
+State 133
+
+   22 S: READ • ID PCOMA
+
+    ID  shift, and go to state 155
+
+
+State 134
+
+   23 S: RETURN • X PCOMA
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    PCOMA  reduce using rule 29 (X)
+
+    X  go to state 156
+    E  go to state 32
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 135
+
+   21 S: WRITE • E PCOMA
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    E  go to state 157
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 136
+
+   18 S: ID • IGUAL E PCOMA
+   19  | ID • INC E PCOMA
+   20  | ID • ABREPAR L CIERRAPAR PCOMA
+
+    INC      shift, and go to state 158
+    IGUAL    shift, and go to state 159
+    ABREPAR  shift, and go to state 160
+
+
+State 137
+
+    7 B: S •
+
+    FOR          reduce using rule 7 (B)
+    IF           reduce using rule 7 (B)
+    LET          reduce using rule 7 (B)
+    READ         reduce using rule 7 (B)
+    RETURN       reduce using rule 7 (B)
+    WRITE        reduce using rule 7 (B)
+    ID           reduce using rule 7 (B)
+    CIERRACORCH  reduce using rule 7 (B)
+
+
+State 138
+
+   43 V: ID ABREPAR • L CIERRAPAR
+
+    ID       shift, and go to state 121
+    ENTERO   shift, and go to state 122
+    REAL     shift, and go to state 123
+    CAD      shift, and go to state 124
+    ABREPAR  shift, and go to state 125
+    NOT      shift, and go to state 126
+
+    CIERRAPAR  reduce using rule 25 (L)
+
+    L  go to state 161
+    E  go to state 62
+    R  go to state 127
+    U  go to state 128
+    V  go to state 129
+
+
+State 139
+
+   42 V: ABREPAR E • CIERRAPAR
+
+    CIERRAPAR  shift, and go to state 162
+
+
+State 140
+
+   33 R: NOT R •
+
+    CIERRAPAR  reduce using rule 33 (R)
+    MAYOR      reduce using rule 33 (R)
+
+
+State 141
+
+   31 E1: MAYOR • R E1
+
+    ID       shift, and go to state 112
+    ENTERO   shift, and go to state 113
+    REAL     shift, and go to state 114
+    CAD      shift, and go to state 115
+    ABREPAR  shift, and go to state 116
+    NOT      shift, and go to state 117
+
+    R  go to state 163
+    U  go to state 119
+    V  go to state 120
+
+
+State 142
+
+   30 E: R E1 •
+
+    CIERRAPAR  reduce using rule 30 (E)
+
+
+State 143
+
+   36 U1: MENOS • V U1
+
+    ID       shift, and go to state 112
+    ENTERO   shift, and go to state 113
+    REAL     shift, and go to state 114
+    CAD      shift, and go to state 115
+    ABREPAR  shift, and go to state 116
+
+    V  go to state 164
+
+
+State 144
+
+   35 U: V U1 •
+
+    CIERRAPAR  reduce using rule 35 (U)
+    MAYOR      reduce using rule 35 (U)
+
+
+State 145
+
+   43 V: ID ABREPAR • L CIERRAPAR
+
+    ID       shift, and go to state 121
+    ENTERO   shift, and go to state 122
+    REAL     shift, and go to state 123
+    CAD      shift, and go to state 124
+    ABREPAR  shift, and go to state 125
+    NOT      shift, and go to state 126
+
+    CIERRAPAR  reduce using rule 25 (L)
+
+    L  go to state 165
+    E  go to state 62
+    R  go to state 127
+    U  go to state 128
+    V  go to state 129
+
+
+State 146
+
+   42 V: ABREPAR E • CIERRAPAR
+
+    CIERRAPAR  shift, and go to state 166
+
+
+State 147
+
+   33 R: NOT R •
+
+    COMA       reduce using rule 33 (R)
+    CIERRAPAR  reduce using rule 33 (R)
+    MAYOR      reduce using rule 33 (R)
+
+
+State 148
+
+   31 E1: MAYOR • R E1
+
+    ID       shift, and go to state 121
+    ENTERO   shift, and go to state 122
+    REAL     shift, and go to state 123
+    CAD      shift, and go to state 124
+    ABREPAR  shift, and go to state 125
+    NOT      shift, and go to state 126
+
+    R  go to state 167
+    U  go to state 128
+    V  go to state 129
+
+
+State 149
+
+   30 E: R E1 •
+
+    COMA       reduce using rule 30 (E)
+    CIERRAPAR  reduce using rule 30 (E)
+
+
+State 150
+
+   36 U1: MENOS • V U1
+
+    ID       shift, and go to state 121
+    ENTERO   shift, and go to state 122
+    REAL     shift, and go to state 123
+    CAD      shift, and go to state 124
+    ABREPAR  shift, and go to state 125
+
+    V  go to state 168
+
+
+State 151
+
+   35 U: V U1 •
+
+    COMA       reduce using rule 35 (U)
+    CIERRAPAR  reduce using rule 35 (U)
+    MAYOR      reduce using rule 35 (U)
+
+
+State 152
+
+    6 B: FOR ABREPAR • G1 PCOMA E PCOMA G2 CIERRAPAR S
+
+    ID  shift, and go to state 43
+
+    PCOMA  reduce using rule 9 (G1)
+
+    G1  go to state 169
+
+
+State 153
+
+    4 B: IF ABREPAR • E CIERRAPAR S
+
+    ID       shift, and go to state 112
+    ENTERO   shift, and go to state 113
+    REAL     shift, and go to state 114
+    CAD      shift, and go to state 115
+    ABREPAR  shift, and go to state 116
+    NOT      shift, and go to state 117
+
+    E  go to state 170
+    R  go to state 118
+    U  go to state 119
+    V  go to state 120
+
+
+State 154
+
+    5 B: LET M • T ID PCOMA
+
+    BOOLEAN  shift, and go to state 15
+    FLOAT    shift, and go to state 16
+    INT      shift, and go to state 17
+    STRING   shift, and go to state 18
+
+    T  go to state 171
+
+
+State 155
+
+   22 S: READ ID • PCOMA
+
+    PCOMA  shift, and go to state 172
+
+
+State 156
+
+   23 S: RETURN X • PCOMA
+
+    PCOMA  shift, and go to state 173
+
+
+State 157
+
+   21 S: WRITE E • PCOMA
+
+    PCOMA  shift, and go to state 174
+
+
+State 158
+
+   19 S: ID INC • E PCOMA
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    E  go to state 175
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 159
+
+   18 S: ID IGUAL • E PCOMA
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    E  go to state 176
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 160
+
+   20 S: ID ABREPAR • L CIERRAPAR PCOMA
+
+    ID       shift, and go to state 121
+    ENTERO   shift, and go to state 122
+    REAL     shift, and go to state 123
+    CAD      shift, and go to state 124
+    ABREPAR  shift, and go to state 125
+    NOT      shift, and go to state 126
+
+    CIERRAPAR  reduce using rule 25 (L)
+
+    L  go to state 177
+    E  go to state 62
+    R  go to state 127
+    U  go to state 128
+    V  go to state 129
+
+
+State 161
+
+   43 V: ID ABREPAR L • CIERRAPAR
+
+    CIERRAPAR  shift, and go to state 178
+
+
+State 162
+
+   42 V: ABREPAR E CIERRAPAR •
+
+    CIERRAPAR  reduce using rule 42 (V)
+    MENOS      reduce using rule 42 (V)
+    MAYOR      reduce using rule 42 (V)
+
+
+State 163
+
+   31 E1: MAYOR R • E1
+
+    MAYOR  shift, and go to state 141
+
+    CIERRAPAR  reduce using rule 32 (E1)
+
+    E1  go to state 179
+
+
+State 164
+
+   36 U1: MENOS V • U1
+
+    MENOS  shift, and go to state 143
+
+    CIERRAPAR  reduce using rule 37 (U1)
+    MAYOR      reduce using rule 37 (U1)
+
+    U1  go to state 180
+
+
+State 165
+
+   43 V: ID ABREPAR L • CIERRAPAR
+
+    CIERRAPAR  shift, and go to state 181
+
+
+State 166
+
+   42 V: ABREPAR E CIERRAPAR •
+
+    COMA       reduce using rule 42 (V)
+    CIERRAPAR  reduce using rule 42 (V)
+    MENOS      reduce using rule 42 (V)
+    MAYOR      reduce using rule 42 (V)
+
+
+State 167
+
+   31 E1: MAYOR R • E1
+
+    MAYOR  shift, and go to state 148
+
+    COMA       reduce using rule 32 (E1)
+    CIERRAPAR  reduce using rule 32 (E1)
+
+    E1  go to state 182
+
+
+State 168
+
+   36 U1: MENOS V • U1
+
+    MENOS  shift, and go to state 150
+
+    COMA       reduce using rule 37 (U1)
+    CIERRAPAR  reduce using rule 37 (U1)
+    MAYOR      reduce using rule 37 (U1)
+
+    U1  go to state 183
+
+
+State 169
+
+    6 B: FOR ABREPAR G1 • PCOMA E PCOMA G2 CIERRAPAR S
+
+    PCOMA  shift, and go to state 184
+
+
+State 170
+
+    4 B: IF ABREPAR E • CIERRAPAR S
+
+    CIERRAPAR  shift, and go to state 185
+
+
+State 171
+
+    5 B: LET M T • ID PCOMA
+
+    ID  shift, and go to state 186
+
+
+State 172
+
+   22 S: READ ID PCOMA •
+
+    FOR          reduce using rule 22 (S)
+    IF           reduce using rule 22 (S)
+    LET          reduce using rule 22 (S)
+    READ         reduce using rule 22 (S)
+    RETURN       reduce using rule 22 (S)
+    WRITE        reduce using rule 22 (S)
+    ID           reduce using rule 22 (S)
+    CIERRACORCH  reduce using rule 22 (S)
+
+
+State 173
+
+   23 S: RETURN X PCOMA •
+
+    FOR          reduce using rule 23 (S)
+    IF           reduce using rule 23 (S)
+    LET          reduce using rule 23 (S)
+    READ         reduce using rule 23 (S)
+    RETURN       reduce using rule 23 (S)
+    WRITE        reduce using rule 23 (S)
+    ID           reduce using rule 23 (S)
+    CIERRACORCH  reduce using rule 23 (S)
+
+
+State 174
+
+   21 S: WRITE E PCOMA •
+
+    FOR          reduce using rule 21 (S)
+    IF           reduce using rule 21 (S)
+    LET          reduce using rule 21 (S)
+    READ         reduce using rule 21 (S)
+    RETURN       reduce using rule 21 (S)
+    WRITE        reduce using rule 21 (S)
+    ID           reduce using rule 21 (S)
+    CIERRACORCH  reduce using rule 21 (S)
+
+
+State 175
+
+   19 S: ID INC E • PCOMA
+
+    PCOMA  shift, and go to state 187
+
+
+State 176
+
+   18 S: ID IGUAL E • PCOMA
+
+    PCOMA  shift, and go to state 188
+
+
+State 177
+
+   20 S: ID ABREPAR L • CIERRAPAR PCOMA
+
+    CIERRAPAR  shift, and go to state 189
+
+
+State 178
+
+   43 V: ID ABREPAR L CIERRAPAR •
+
+    CIERRAPAR  reduce using rule 43 (V)
+    MENOS      reduce using rule 43 (V)
+    MAYOR      reduce using rule 43 (V)
+
+
+State 179
+
+   31 E1: MAYOR R E1 •
+
+    CIERRAPAR  reduce using rule 31 (E1)
+
+
+State 180
+
+   36 U1: MENOS V U1 •
+
+    CIERRAPAR  reduce using rule 36 (U1)
+    MAYOR      reduce using rule 36 (U1)
+
+
+State 181
+
+   43 V: ID ABREPAR L CIERRAPAR •
+
+    COMA       reduce using rule 43 (V)
+    CIERRAPAR  reduce using rule 43 (V)
+    MENOS      reduce using rule 43 (V)
+    MAYOR      reduce using rule 43 (V)
+
+
+State 182
+
+   31 E1: MAYOR R E1 •
+
+    COMA       reduce using rule 31 (E1)
+    CIERRAPAR  reduce using rule 31 (E1)
+
+
+State 183
+
+   36 U1: MENOS V U1 •
+
+    COMA       reduce using rule 36 (U1)
+    CIERRAPAR  reduce using rule 36 (U1)
+    MAYOR      reduce using rule 36 (U1)
+
+
+State 184
+
+    6 B: FOR ABREPAR G1 PCOMA • E PCOMA G2 CIERRAPAR S
+
+    ID       shift, and go to state 25
+    ENTERO   shift, and go to state 26
+    REAL     shift, and go to state 27
+    CAD      shift, and go to state 28
+    ABREPAR  shift, and go to state 29
+    NOT      shift, and go to state 30
+
+    E  go to state 190
+    R  go to state 33
+    U  go to state 34
+    V  go to state 35
+
+
+State 185
+
+    4 B: IF ABREPAR E CIERRAPAR • S
+
+    READ    shift, and go to state 133
+    RETURN  shift, and go to state 134
+    WRITE   shift, and go to state 135
+    ID      shift, and go to state 136
+
+    S  go to state 191
+
+
+State 186
+
+    5 B: LET M T ID • PCOMA
+
+    PCOMA  shift, and go to state 192
+
+
+State 187
+
+   19 S: ID INC E PCOMA •
+
+    FOR          reduce using rule 19 (S)
+    IF           reduce using rule 19 (S)
+    LET          reduce using rule 19 (S)
+    READ         reduce using rule 19 (S)
+    RETURN       reduce using rule 19 (S)
+    WRITE        reduce using rule 19 (S)
+    ID           reduce using rule 19 (S)
+    CIERRACORCH  reduce using rule 19 (S)
+
+
+State 188
+
+   18 S: ID IGUAL E PCOMA •
+
+    FOR          reduce using rule 18 (S)
+    IF           reduce using rule 18 (S)
+    LET          reduce using rule 18 (S)
+    READ         reduce using rule 18 (S)
+    RETURN       reduce using rule 18 (S)
+    WRITE        reduce using rule 18 (S)
+    ID           reduce using rule 18 (S)
+    CIERRACORCH  reduce using rule 18 (S)
+
+
+State 189
+
+   20 S: ID ABREPAR L CIERRAPAR • PCOMA
+
+    PCOMA  shift, and go to state 193
+
+
+State 190
+
+    6 B: FOR ABREPAR G1 PCOMA E • PCOMA G2 CIERRAPAR S
+
+    PCOMA  shift, and go to state 194
+
+
+State 191
+
+    4 B: IF ABREPAR E CIERRAPAR S •
+
+    FOR          reduce using rule 4 (B)
+    IF           reduce using rule 4 (B)
+    LET          reduce using rule 4 (B)
+    READ         reduce using rule 4 (B)
+    RETURN       reduce using rule 4 (B)
+    WRITE        reduce using rule 4 (B)
+    ID           reduce using rule 4 (B)
+    CIERRACORCH  reduce using rule 4 (B)
+
+
+State 192
+
+    5 B: LET M T ID PCOMA •
+
+    FOR          reduce using rule 5 (B)
+    IF           reduce using rule 5 (B)
+    LET          reduce using rule 5 (B)
+    READ         reduce using rule 5 (B)
+    RETURN       reduce using rule 5 (B)
+    WRITE        reduce using rule 5 (B)
+    ID           reduce using rule 5 (B)
+    CIERRACORCH  reduce using rule 5 (B)
+
+
+State 193
+
+   20 S: ID ABREPAR L CIERRAPAR PCOMA •
+
+    FOR          reduce using rule 20 (S)
+    IF           reduce using rule 20 (S)
+    LET          reduce using rule 20 (S)
+    READ         reduce using rule 20 (S)
+    RETURN       reduce using rule 20 (S)
+    WRITE        reduce using rule 20 (S)
+    ID           reduce using rule 20 (S)
+    CIERRACORCH  reduce using rule 20 (S)
+
+
+State 194
+
+    6 B: FOR ABREPAR G1 PCOMA E PCOMA • G2 CIERRAPAR S
+
+    ID  shift, and go to state 97
+
+    CIERRAPAR  reduce using rule 12 (G2)
+
+    G2  go to state 195
+
+
+State 195
+
+    6 B: FOR ABREPAR G1 PCOMA E PCOMA G2 • CIERRAPAR S
+
+    CIERRAPAR  shift, and go to state 196
+
+
+State 196
+
+    6 B: FOR ABREPAR G1 PCOMA E PCOMA G2 CIERRAPAR • S
+
+    READ    shift, and go to state 133
+    RETURN  shift, and go to state 134
+    WRITE   shift, and go to state 135
+    ID      shift, and go to state 136
+
+    S  go to state 197
+
+
+State 197
+
+    6 B: FOR ABREPAR G1 PCOMA E PCOMA G2 CIERRAPAR S •
+
+    FOR          reduce using rule 6 (B)
+    IF           reduce using rule 6 (B)
+    LET          reduce using rule 6 (B)
+    READ         reduce using rule 6 (B)
+    RETURN       reduce using rule 6 (B)
+    WRITE        reduce using rule 6 (B)
+    ID           reduce using rule 6 (B)
+    CIERRACORCH  reduce using rule 6 (B)

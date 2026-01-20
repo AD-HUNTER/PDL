@@ -7,12 +7,12 @@ TABLA LOCAL #2:
 	+ Tipo: 'real'
 ----------------------------------------
 TABLA LOCAL #3:
-*LEXEMA: 'g'
+*LEXEMA: 'argc'
 	Atributos:
 	+ Tipo: 'entero'
-*LEXEMA: 'h'
+*LEXEMA: 'argv'
 	Atributos:
-	+ Tipo: 'entero'
+	+ Tipo: 'cadena'
 *LEXEMA: 'e'
 	Atributos:
 	+ Tipo: 'entero'
@@ -40,6 +40,6 @@ TABLA PRINCIPAL #1:
 	+ Tipo: 'funcion'
 	+ numParam: 2
 	+ TipoParam0: 'entero'
-	+ TipoParam1: 'entero'
+	+ TipoParam1: 'cadena'
 	+ TipoRetorno: 'entero'
 	+ EtiqFuncion: 'func_main'

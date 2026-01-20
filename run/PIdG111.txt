@@ -1,4 +1,0 @@
-lets boolean = false ;
-int error = 271000000.56 ;
-let dd ^ ;
-let h = x _ _y ;

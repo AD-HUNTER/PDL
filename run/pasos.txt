@@ -480,14 +480,14 @@ I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, 
 desplazamiento , al estado I99
 
 
-int
+string
 I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, I92, ,, I99, 
-desplazamiento int al estado I17
+desplazamiento string al estado I18
 
 
 id
-I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, I92, ,, I99, int, I17, 
-reduccion R14
+I0, B, I11, B, I11, F, I13, function, I2, F1, I21, F2, I46, (, I65, T, I81, id, I92, ,, I99, string, I18, 
+reduccion R17
 
 
 desplazamiento T al estado I106

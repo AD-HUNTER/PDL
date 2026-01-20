@@ -51,6 +51,8 @@ public class AnalizadorSintactico {
     protected PrintWriter parser;
     protected PrintWriter pasos;
     private List<String> l;
+    private int contadorIteraciones;
+    private int lineaActual;
 
     //	private Pair p1;
     //	private Pair p2;
@@ -64,6 +66,8 @@ public class AnalizadorSintactico {
         this.simb = llenarSimbolos();
         this.aceptado = false;
         this.error = false;
+        this.contadorIteraciones = 0;
+        this.lineaActual = 1;
         this.parser = new PrintWriter(path_salida_sintactico);
         parser.write("Ascendente ");
         this.pasos = new PrintWriter("C:/Users/asack/Documents/Grado/PDL/Proyecto/run/pasos.txt");
@@ -203,7 +207,8 @@ public class AnalizadorSintactico {
     }
     // TODO
     public void error() {
-        System.out.println("Error");
+        Main.errores.add(new Error(lineaActual, "SINTACTICO", "Token inesperado: '" + Main.tokens.get(lineaActual) + "' en estado " + estadoActual));
+        pasos.write("ERROR SINTACTICO: Token inesperado '" + Main.tokens.get(lineaActual) + "' en estado " + estadoActual + "\n");
         error = true;
     }
     //Devuelve el antecedente de R
@@ -1197,13 +1202,32 @@ public class AnalizadorSintactico {
     }
     // TODO
     public void accion(Token token) {//Tabla de accion
+        if (error || aceptado) return;
+        // Actualizar lineaActual buscando la posición del token actual en Main.tokens
+        for (int i = 0; i < Main.tokens.size(); i++) {
+            if (Main.tokens.get(i) == token) {
+                lineaActual = i + 1;  // +1 porque las líneas empiezan en 1
+                break;
+            }
+        }
         boolean desplazamiento = false;
         int posTokenenString = posTokenenString(token);// Tengo la pos del token recibido en el array de posibles simbolos
+        if (posTokenenString == -1) {
+            Main.errores.add(new Error(lineaActual, "SINTACTICO", "Token no reconocido: " + token.getCodigo()));
+            error = true;
+            return;
+        }
         String s = simb[posTokenenString];
         EstadosSintactico estadoDesplazado = EstadosSintactico.I0;
-
-        while(!desplazamiento) {
-
+        int maxIteraciones = 1000;  // Límite para evitar bucles infinitos
+        int iteracionesEnEsteToken = 0;
+        while(!desplazamiento && !error && !aceptado) {
+            // Detectar bucle infinito
+            if (iteracionesEnEsteToken > maxIteraciones) {
+                Main.errores.add(new Error(lineaActual, "SINTACTICO", "Bucle detectado procesando '" + s + "' en estado " + estadoActual));
+                error = true;
+                return;
+            }
             pasos.write(s);
             pasos.write("\n");
             pasos.write(mostrar_lista(l));
@@ -2699,8 +2723,16 @@ public class AnalizadorSintactico {
                     }
                     break;
             }//fin switch
+            // Si no se hizo desplazamiento ni reducción en esta iteración, hay error
+            contadorIteraciones++;
+            if (contadorIteraciones > 10000) {
+                Main.errores.add(new Error(lineaActual, "SINTACTICO", "Bucle infinito detectado procesando '" + s + "' en estado " + estadoActual));
+                error = true;
+                return;
+            }
         }//fin while
-    }//fin comprobar_Token
+        contadorIteraciones = 0;  // Resetear para el siguiente token
+    }//fin accion
     // TODO
     public void end() {
         parser.close();

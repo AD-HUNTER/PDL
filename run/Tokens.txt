@@ -32,7 +32,7 @@
  < PalRes , 6 > 
  < Id , -1 > 
  < Coma , - > 
- < PalRes , 6 > 
+ < PalRes , 10 > 
  < Id , -2 > 
  < CierraPar , - > 
  < AbreCorch , - > 

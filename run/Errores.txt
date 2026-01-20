@@ -1,1 +1,260 @@
-No se han encontrado errores.
+Linea 4 LEXICO: Caracter no reconocido: :
+Linea 4 LEXICO: Caracter no reconocido: á
+Linea 4 SEMANTICO: Variable 'metro' no declarada.
+Linea 4 SEMANTICO: Variable 'formal' no declarada.
+Linea 4 SEMANTICO: Variable 'de' no declarada.
+Linea 4 SEMANTICO: Variable 'la' no declarada.
+Linea 4 LEXICO: Caracter no reconocido: ó
+Linea 4 SEMANTICO: Variable 'entera' no declarada.
+Linea 4 LEXICO: Caracter no reconocido: *
+Linea 4 LEXICO: Caracter no reconocido: 
+Linea 7 LEXICO: Caracter no reconocido: *
+Linea 10 LEXICO: Caracter no reconocido: ó
+Linea 10 SEMANTICO: Variable 'n' no declarada.
+Linea 10 SEMANTICO: Variable 'es' no declarada.
+Linea 10 SEMANTICO: Variable 'de' no declarada.
+Linea 10 LEXICO: Caracter no reconocido: ó
+Linea 10 SEMANTICO: Variable 'opcional' no declarada.
+Linea 10 LEXICO: Caracter no reconocido: *
+Linea 10 LEXICO: Caracter no reconocido: 
+Linea 15 LEXICO: Caracter no reconocido: \
+Linea 15 LEXICO: Caracter no reconocido: 
+Linea 20 LEXICO: Caracter no reconocido:  
+Linea 20 LEXICO: Caracter no reconocido: *
+Linea 21 SEMANTICO: Variable 'do' no declarada.
+Linea 23 LEXICO: Caracter no reconocido: :
+Linea 23 LEXICO: Caracter no reconocido: *
+Linea 23 LEXICO: Caracter no reconocido: *
+Linea 23 LEXICO: Caracter no reconocido: 
+Linea 24 SEMANTICO: Variable 'while' no declarada.
+Linea 25 SEMANTICO: Variable 'factorial' no declarada.
+Linea 30 LEXICO: Caracter no reconocido: :
+Linea 30 SEMANTICO: Variable 'inicializada' no declarada.
+Linea 30 SEMANTICO: Variable 'a' no declarada.
+Linea 30 LEXICO: Caracter no reconocido: *
+Linea 30 LEXICO: Caracter no reconocido: 
+Linea 31 LEXICO: Caracter no reconocido: :
+Linea 31 SEMANTICO: Variable 'inicializada' no declarada.
+Linea 31 SEMANTICO: Variable 'a' no declarada.
+Linea 31 SEMANTICO: Variable 'por' no declarada.
+Linea 31 LEXICO: Caracter no reconocido: ó
+Linea 31 LEXICO: Caracter no reconocido: *
+Linea 31 LEXICO: Caracter no reconocido: 
+Linea 32 SEMANTICO: Variable 'num' no declarada.
+Linea 32 LEXICO: Caracter no reconocido: <
+Linea 34 LEXICO: Caracter no reconocido: :
+Linea 34 LEXICO: Caracter no reconocido:  
+Linea 34 LEXICO: Caracter no reconocido: *
+Linea 34 LEXICO: Caracter no reconocido: *
+Linea 34 LEXICO: Caracter no reconocido: 
+Linea 42 LEXICO: Caracter no reconocido: ó
+Linea 42 LEXICO: Caracter no reconocido: *
+Linea 42 LEXICO: Caracter no reconocido: 
+Linea 54 LEXICO: Caracter no reconocido: ó
+Linea 54 SEMANTICO: Variable 'que' no declarada.
+Linea 54 SEMANTICO: Variable 'recibe' no declarada.
+Linea 54 SEMANTICO: Variable 'argumentos' no declarada.
+Linea 54 LEXICO: Caracter no reconocido: *
+Linea 54 LEXICO: Caracter no reconocido: 
+Linea 57 LEXICO: Caracter no reconocido: í
+Linea 57 SEMANTICO: Variable 'nea' no declarada.
+Linea 57 LEXICO: Caracter no reconocido: *
+Linea 57 LEXICO: Caracter no reconocido: 
+Linea 58 LEXICO: Caracter no reconocido: ó
+Linea 58 LEXICO: Caracter no reconocido: ó
+Linea 58 LEXICO: Caracter no reconocido: í
+Linea 58 LEXICO: Caracter no reconocido: *
+Linea 58 LEXICO: Caracter no reconocido: 
+Linea 64 SEMANTICO: Variable 'else' no declarada.
+Linea 65 LEXICO: Caracter no reconocido: :
+Linea 65 LEXICO: Caracter no reconocido: ó
+Linea 65 SEMANTICO: Variable 'que' no declarada.
+Linea 65 SEMANTICO: Variable 'devuelve' no declarada.
+Linea 65 SEMANTICO: Variable 'una' no declarada.
+Linea 65 LEXICO: Caracter no reconocido: *
+Linea 65 LEXICO: Caracter no reconocido: 
+Linea 67 LEXICO: Caracter no reconocido: :
+Linea 67 LEXICO: Caracter no reconocido: *
+Linea 67 LEXICO: Caracter no reconocido: 
+Linea 68 LEXICO: Caracter no reconocido: í
+Linea 68 SEMANTICO: Variable 'a' no declarada.
+Linea 68 LEXICO: Caracter no reconocido: *
+Linea 68 LEXICO: Caracter no reconocido: 
+Linea 72 LEXICO: Caracter no reconocido: \
+Linea 72 SEMANTICO: Variable 'nIntroduce' no declarada.
+Linea 72 SEMANTICO: Variable 'un' no declarada.
+Linea 72 LEXICO: Caracter no reconocido: '
+Linea 72 LEXICO: Caracter no reconocido: ú
+Linea 72 LEXICO: Caracter no reconocido: '
+Linea 72 LEXICO: Caracter no reconocido: .
+Linea 72 LEXICO: Caracter no reconocido: 
+Linea 74 SEMANTICO: Variable 'num' no declarada.
+Linea 74 LEXICO: Caracter no reconocido: ú
+Linea 74 SEMANTICO: Variable 'mero' no declarada.
+Linea 74 SEMANTICO: Variable 'del' no declarada.
+Linea 74 SEMANTICO: Variable 'teclado' no declarada.
+Linea 74 SEMANTICO: Variable 'y' no declarada.
+Linea 74 SEMANTICO: Variable 'se' no declarada.
+Linea 74 SEMANTICO: Variable 'guarda' no declarada.
+Linea 74 SEMANTICO: Variable 'en' no declarada.
+Linea 74 SEMANTICO: Variable 'variable' no declarada.
+Linea 74 SEMANTICO: Variable 'global' no declarada.
+Linea 74 LEXICO: Caracter no reconocido: *
+Linea 74 LEXICO: Caracter no reconocido: 
+Linea 78 LEXICO: Caracter no reconocido: :
+Linea 79 SEMANTICO: Variable 'case' no declarada.
+Linea 79 LEXICO: Caracter no reconocido: :
+Linea 79 LEXICO: Caracter no reconocido: \
+Linea 79 LEXICO: Caracter no reconocido: 
+Linea 80 LEXICO: Caracter no reconocido: :
+Linea 80 LEXICO: Caracter no reconocido: *
+Linea 80 LEXICO: Caracter no reconocido: 
+Linea 83 LEXICO: Caracter no reconocido: \
+Linea 83 LEXICO: Caracter no reconocido: 
+Linea 90 SEMANTICO: Variable 'false' no declarada.
+Linea 91 LEXICO: Caracter no reconocido: :
+Linea 91 LEXICO: Caracter no reconocido: 
+Linea 94 LEXICO: Caracter no reconocido: :
+Linea 94 LEXICO: Caracter no reconocido: 
+Linea 97 LEXICO: Caracter no reconocido: :
+Linea 97 LEXICO: Caracter no reconocido: 
+Linea 100 LEXICO: Caracter no reconocido: :
+Linea 100 LEXICO: Caracter no reconocido: 
+Linea 108 LEXICO: Caracter no reconocido: |
+Linea 108 LEXICO: Caracter no reconocido: |
+Linea 108 LEXICO: Caracter no reconocido: %
+Linea 108 LEXICO: Caracter no reconocido: *
+Linea 108 LEXICO: Caracter no reconocido: 	
+Linea 109 LEXICO: Caracter no reconocido: :
+Linea 109 LEXICO: Caracter no reconocido: ó
+Linea 109 LEXICO: Caracter no reconocido: ó
+Linea 109 SEMANTICO: Variable 'gica' no declarada.
+Linea 109 LEXICO: Caracter no reconocido: *
+Linea 109 LEXICO: Caracter no reconocido: 
+Linea 111 LEXICO: Caracter no reconocido: :
+Linea 112 SEMANTICO: Variable 'Esto' no declarada.
+Linea 112 SEMANTICO: Variable 'son' no declarada.
+Linea 112 LEXICO: Caracter no reconocido: :
+Linea 113 LEXICO: Caracter no reconocido: :
+Linea 113 LEXICO: Caracter no reconocido: [
+Linea 113 LEXICO: Caracter no reconocido: ]
+Linea 114 LEXICO: Caracter no reconocido: é
+Linea 114 LEXICO: Caracter no reconocido: :
+Linea 115 LEXICO: Caracter no reconocido: *
+Linea 115 LEXICO: Caracter no reconocido: 
+Linea 121 LEXICO: Caracter no reconocido: :
+Linea 121 LEXICO: Caracter no reconocido: :
+Linea 121 LEXICO: Caracter no reconocido: :
+Linea 121 LEXICO: Caracter no reconocido: :
+Linea 121 LEXICO: Caracter no reconocido: :
+Linea 121 LEXICO: Caracter no reconocido: :
+Linea 121 LEXICO: Caracter no reconocido: :
+Linea 122 SEMANTICO: Variable 'break' no declarada.
+Linea 123 LEXICO: Caracter no reconocido: :
+Linea 123 LEXICO: Caracter no reconocido: :
+Linea 123 LEXICO: Caracter no reconocido: :
+Linea 123 LEXICO: Caracter no reconocido: :
+Linea 125 LEXICO: Caracter no reconocido: :
+Linea 127 LEXICO: Caracter no reconocido: :
+Linea 127 LEXICO: Caracter no reconocido: :
+Linea 127 SEMANTICO: Variable 'mes' no declarada.
+Linea 127 LEXICO: Caracter no reconocido: :
+Linea 127 LEXICO: Caracter no reconocido: 
+Linea 128 LEXICO: Caracter no reconocido: *
+Linea 128 LEXICO: Caracter no reconocido: 
+Linea 129 LEXICO: Caracter no reconocido: ó
+Linea 129 SEMANTICO: Variable 'entera' no declarada.
+Linea 129 LEXICO: Caracter no reconocido: *
+Linea 129 LEXICO: Caracter no reconocido: 
+Linea 133 LEXICO: Caracter no reconocido: &
+Linea 133 LEXICO: Caracter no reconocido: &
+Linea 133 LEXICO: Caracter no reconocido: <
+Linea 133 LEXICO: Caracter no reconocido: &
+Linea 133 LEXICO: Caracter no reconocido: &
+Linea 133 LEXICO: Caracter no reconocido: &
+Linea 133 LEXICO: Caracter no reconocido: &
+Linea 133 LEXICO: Caracter no reconocido: <
+Linea 138 LEXICO: Caracter no reconocido:  
+Linea 145 LEXICO: Caracter no reconocido: <
+Linea 145 LEXICO: Caracter no reconocido: +
+Linea 147 LEXICO: Caracter no reconocido: *
+Linea 148 LEXICO: Caracter no reconocido: :
+Linea 148 LEXICO: Caracter no reconocido: 
+Linea 150 LEXICO: Caracter no reconocido: :
+Linea 150 LEXICO: Caracter no reconocido: ó
+Linea 150 SEMANTICO: Variable 'no' no declarada.
+Linea 150 SEMANTICO: Variable 'nada' no declarada.
+Linea 150 LEXICO: Caracter no reconocido: *
+Linea 150 LEXICO: Caracter no reconocido: 
+Linea 152 LEXICO: Caracter no reconocido: ó
+Linea 152 SEMANTICO: Error de declaracion: La funcion 'la' ya existe en la tabla global.
+Linea 152 LEXICO: Caracter no reconocido: ó
+Linea 152 SEMANTICO: Error de declaracion: La funcion 'n' ya existe en la tabla global.
+Linea 152 SEMANTICO: Error de declaracion: La funcion 'demo' ya existe en la tabla global.
+Linea 152 SEMANTICO: Variable 'sin' no declarada.
+Linea 152 SEMANTICO: Variable 'argumentos' no declarada.
+Linea 152 LEXICO: Caracter no reconocido: *
+Linea 152 LEXICO: Caracter no reconocido: 
+Linea 157 LEXICO: Caracter no reconocido: ¿
+Linea 157 SEMANTICO: Variable 'Hola' no declarada.
+Linea 157 LEXICO: Caracter no reconocido: ?
+Linea 157 LEXICO: Caracter no reconocido: 
+Linea 159 LEXICO: Caracter no reconocido: '
+Linea 159 SEMANTICO: Variable 'Escriba' no declarada.
+Linea 159 LEXICO: Caracter no reconocido: ú
+Linea 159 LEXICO: Caracter no reconocido: :
+Linea 159 LEXICO: Caracter no reconocido: '
+Linea 164 LEXICO: Caracter no reconocido: &
+Linea 164 LEXICO: Caracter no reconocido: &
+Linea 166 LEXICO: Caracter no reconocido: '
+Linea 166 SEMANTICO: Variable 'Escriba' no declarada.
+Linea 166 SEMANTICO: Variable 'su' no declarada.
+Linea 166 LEXICO: Caracter no reconocido: :
+Linea 166 LEXICO: Caracter no reconocido: '
+Linea 169 LEXICO: Caracter no reconocido: <
+Linea 169 LEXICO: Caracter no reconocido: <
+Linea 169 SEMANTICO: Variable 'v0' no declarada.
+Linea 169 SEMANTICO: Variable 'otro' no declarada.
+Linea 169 SEMANTICO: Variable 'caso' no declarada.
+Linea 169 SEMANTICO: Variable 'v0' no declarada.
+Linea 169 LEXICO: Caracter no reconocido: v
+Linea 169 LEXICO: Caracter no reconocido: *
+Linea 169 LEXICO: Caracter no reconocido: 
+Linea 171 LEXICO: Caracter no reconocido: í
+Linea 171 SEMANTICO: Variable 'por' no declarada.
+Linea 171 SEMANTICO: Variable 'lo' no declarada.
+Linea 171 SEMANTICO: Variable 'puede' no declarada.
+Linea 171 SEMANTICO: Variable 'utilizar' no declarada.
+Linea 171 SEMANTICO: Variable 'hasta' no declarada.
+Linea 171 SEMANTICO: Variable 'el' no declarada.
+Linea 171 SEMANTICO: Variable 'final' no declarada.
+Linea 171 SEMANTICO: Error de declaracion: La funcion 'la' ya existe en la tabla global.
+Linea 171 LEXICO: Caracter no reconocido: ó
+Linea 171 SEMANTICO: Error de declaracion: La funcion 'n' ya existe en la tabla global.
+Linea 171 LEXICO: Caracter no reconocido: *
+Linea 171 LEXICO: Caracter no reconocido: 
+Linea 175 SEMANTICO: Variable 'v0' no declarada.
+Linea 175 LEXICO: Caracter no reconocido:  
+Linea 175 SEMANTICO: Variable 'v3' no declarada.
+Linea 180 SEMANTICO: Variable 'v1' no declarada.
+Linea 182 LEXICO: Caracter no reconocido: \
+Linea 182 LEXICO: Caracter no reconocido: 
+Linea 186 LEXICO: Caracter no reconocido: \
+Linea 186 LEXICO: Caracter no reconocido: 	
+Linea 186 LEXICO: Caracter no reconocido: :
+Linea 186 LEXICO: Caracter no reconocido: `
+Linea 186 SEMANTICO: Variable 'El' no declarada.
+Linea 186 SEMANTICO: Variable 'primer' no declarada.
+Linea 186 SEMANTICO: Variable 'valor' no declarada.
+Linea 186 SEMANTICO: Variable 'era' no declarada.
+Linea 186 LEXICO: Caracter no reconocido: \
+Linea 186 LEXICO: Caracter no reconocido: ´
+Linea 186 LEXICO: Caracter no reconocido: *
+Linea 186 LEXICO: Caracter no reconocido: 
+Linea 191 LEXICO: Caracter no reconocido: <
+Linea 191 LEXICO: Caracter no reconocido: +
+Linea 192 SEMANTICO: Variable 'zv' no declarada.
+Linea 196 LEXICO: Caracter no reconocido: "
+Linea 196 SEMANTICO: Variable 'true' no declarada.
+Linea 199 SINTACTICO: Bucle infinito detectado procesando 'id'
+Numero de errores: 259.

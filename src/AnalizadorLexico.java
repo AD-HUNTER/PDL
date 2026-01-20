@@ -32,6 +32,7 @@ public class AnalizadorLexico {
     private String[] tiposParametros;
     private boolean primeraEscrituraTS;
     private boolean tablaLocalCreada;
+    public static int linea = 1;
 
     /*
         private boolean esLetra (char caracter) {
@@ -195,7 +196,6 @@ public class AnalizadorLexico {
         String estadoActual = estadoInicial;
         String siguienteEstado = null;
         int caracter;
-        int linea = 1;
         char charAscii;
         // Estados finales que requieren devolver el caracter al flujo
         Set<String> estadosConPushback = Set.of("q50", "q51", "q52");

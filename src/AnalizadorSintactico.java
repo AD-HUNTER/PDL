@@ -207,8 +207,8 @@ public class AnalizadorSintactico {
     }
     // TODO
     public void error() {
-        Main.errores.add(new Error(lineaActual, "SINTACTICO", "Token inesperado: '" + Main.tokens.get(lineaActual) + "' en estado " + estadoActual));
-        pasos.write("ERROR SINTACTICO: Token inesperado '" + Main.tokens.get(lineaActual) + "' en estado " + estadoActual + "\n");
+        Main.errores.add(new Error(AnalizadorLexico.linea, "SINTACTICO", "Token inesperado: '" + Main.tokens.get(lineaActual) + "'"));
+        pasos.write("ERROR SINTACTICO: Token inesperado '" + Main.tokens.get(lineaActual) + "\n");
         error = true;
     }
     //Devuelve el antecedente de R
@@ -1213,7 +1213,7 @@ public class AnalizadorSintactico {
         boolean desplazamiento = false;
         int posTokenenString = posTokenenString(token);// Tengo la pos del token recibido en el array de posibles simbolos
         if (posTokenenString == -1) {
-            Main.errores.add(new Error(lineaActual, "SINTACTICO", "Token no reconocido: " + token.getCodigo()));
+            Main.errores.add(new Error(AnalizadorLexico.linea, "SINTACTICO", "Token no reconocido: " + token.getCodigo()));
             error = true;
             return;
         }
@@ -1224,7 +1224,7 @@ public class AnalizadorSintactico {
         while(!desplazamiento && !error && !aceptado) {
             // Detectar bucle infinito
             if (iteracionesEnEsteToken > maxIteraciones) {
-                Main.errores.add(new Error(lineaActual, "SINTACTICO", "Bucle detectado procesando '" + s + "' en estado " + estadoActual));
+                Main.errores.add(new Error(AnalizadorLexico.linea, "SINTACTICO", "Bucle detectado procesando '" + s + "'"));
                 error = true;
                 return;
             }
@@ -2726,7 +2726,7 @@ public class AnalizadorSintactico {
             // Si no se hizo desplazamiento ni reducción en esta iteración, hay error
             contadorIteraciones++;
             if (contadorIteraciones > 10000) {
-                Main.errores.add(new Error(lineaActual, "SINTACTICO", "Bucle infinito detectado procesando '" + s + "' en estado " + estadoActual));
+                Main.errores.add(new Error(AnalizadorLexico.linea, "SINTACTICO", "Bucle infinito detectado procesando '" + s + "'"));
                 error = true;
                 return;
             }

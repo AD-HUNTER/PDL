@@ -1,45 +1,387 @@
 TABLA LOCAL #2:
-*LEXEMA: 'a'
+*LEXEMA: 'n'
 	Atributos:
 	+ Tipo: 'entero'
-*LEXEMA: 'b'
-	Atributos:
-	+ Tipo: 'real'
 ----------------------------------------
 TABLA LOCAL #3:
-*LEXEMA: 'argc'
+*LEXEMA: 'n'
 	Atributos:
 	+ Tipo: 'entero'
-*LEXEMA: 'argv'
-	Atributos:
-	+ Tipo: 'cadena'
-*LEXEMA: 'e'
+*LEXEMA: 'factorial'
 	Atributos:
 	+ Tipo: 'entero'
-*LEXEMA: 'f'
-	Atributos:
-	+ Tipo: 'real'
 ----------------------------------------
-TABLA PRINCIPAL #1:
+TABLA LOCAL #4:
+*LEXEMA: 'factorial'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'i'
+	Atributos:
+	+ Tipo: 'entero'
+----------------------------------------
+TABLA LOCAL #6:
+*LEXEMA: 'locales'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'i'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'n'
+	Atributos:
+	+ Tipo: '-'
+----------------------------------------
+TABLA LOCAL #8:
+*LEXEMA: 'n'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'en'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'este'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'caso'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'se'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'a'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'omitir'
+	Atributos:
+	+ Tipo: '-'
+----------------------------------------
+TABLA LOCAL #9:
+*LEXEMA: 'log'
+	Atributos:
+	+ Tipo: 'logico'
+----------------------------------------
+TABLA LOCAL #10:
 *LEXEMA: 'a'
 	Atributos:
 	+ Tipo: 'entero'
-*LEXEMA: 'b'
+----------------------------------------
+TABLA LOCAL #11:
+*LEXEMA: 'm'
 	Atributos:
-	+ Tipo: 'real'
-*LEXEMA: 'acumula'
+	+ Tipo: 'entero'
+*LEXEMA: 'a'
+	Atributos:
+	+ Tipo: 'entero'
+----------------------------------------
+TABLA LOCAL #12:
+*LEXEMA: 'd'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'm'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'a'
+	Atributos:
+	+ Tipo: 'entero'
+----------------------------------------
+TABLA LOCAL #13:
+*LEXEMA: 'v'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'w'
+	Atributos:
+	+ Tipo: 'entero'
+----------------------------------------
+TABLA LOCAL #14:
+*LEXEMA: 'z'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'dim'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 's'
+	Atributos:
+	+ Tipo: 'entero'
+----------------------------------------
+TABLA LOCAL #15:
+*LEXEMA: 'v1'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'v2'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'v3'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'zv'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 's'
+	Atributos:
+	+ Tipo: 'cadena'
+*LEXEMA: 'v0'
+	Atributos:
+	+ Tipo: 'entero'
+----------------------------------------
+TABLA PRINCIPAL #1:
+*LEXEMA: 's'
+	Atributos:
+	+ Tipo: 'cadena'
+*LEXEMA: 'FactorialRecursivo'
 	Atributos:
 	+ Tipo: 'funcion'
-	+ numParam: 2
+	+ numParam: 1
 	+ TipoParam0: 'entero'
-	+ TipoParam1: 'real'
-	+ TipoRetorno: 'void'
-	+ EtiqFuncion: 'func_acumula'
-*LEXEMA: 'main'
-	Atributos:
-	+ Tipo: 'funcion'
-	+ numParam: 2
-	+ TipoParam0: 'entero'
-	+ TipoParam1: 'cadena'
 	+ TipoRetorno: 'entero'
-	+ EtiqFuncion: 'func_main'
+	+ EtiqFuncion: 'func_FactorialRecursivo'
+*LEXEMA: 'uno'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'n'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'es'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'de'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'opcional'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'UNO'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'salto'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 0
+	+ TipoParam: '-'
+	+ TipoRetorno: 'cadena'
+	+ EtiqFuncion: 'func_salto'
+*LEXEMA: 'FactorialDo'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 1
+	+ TipoParam0: 'entero'
+	+ TipoRetorno: 'entero'
+	+ EtiqFuncion: 'func_FactorialDo'
+*LEXEMA: 'while'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'factorial'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'FactorialWhile'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 0
+	+ TipoParam: '-'
+	+ TipoRetorno: 'entero'
+	+ EtiqFuncion: 'func_FactorialWhile'
+*LEXEMA: 'FactorialFor'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 1
+	+ TipoParam0: 'entero'
+	+ TipoRetorno: 'entero'
+	+ EtiqFuncion: 'func_FactorialFor'
+*LEXEMA: 'variables'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 5
+	+ TipoParam0: ''
+	+ TipoParam1: ''
+	+ TipoParam2: ''
+	+ TipoParam3: ''
+	+ TipoParam4: ''
+	+ TipoRetorno: 'entero'
+	+ EtiqFuncion: 'func_variables'
+*LEXEMA: 'For'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'Do'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'While'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'imprime'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 3
+	+ TipoParam0: 'cadena'
+	+ TipoParam1: 'cadena'
+	+ TipoParam2: 'entero'
+	+ TipoRetorno: 'void'
+	+ EtiqFuncion: 'func_imprime'
+*LEXEMA: 'la'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 7
+	+ TipoParam0: ''
+	+ TipoParam1: ''
+	+ TipoParam2: ''
+	+ TipoParam3: ''
+	+ TipoParam4: ''
+	+ TipoParam5: ''
+	+ TipoParam6: ''
+	+ TipoRetorno: 'entero'
+	+ EtiqFuncion: 'func_la'
+*LEXEMA: 'cadena'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 1
+	+ TipoParam0: 'lógico'
+	+ TipoRetorno: 'cadena'
+	+ EtiqFuncion: 'func_cadena'
+*LEXEMA: 'else'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'que'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'devuelve'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'una'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'a'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'nIntroduce'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'un'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'num'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'mero'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'del'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'teclado'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'y'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'se'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'guarda'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'en'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'variable'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'global'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'case'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'false'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'bisiesto'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 1
+	+ TipoParam0: 'entero'
+	+ TipoRetorno: 'lógico'
+	+ EtiqFuncion: 'func_bisiesto'
+*LEXEMA: 'gica'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'Esto'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'son'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'dias'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 2
+	+ TipoParam0: 'entero'
+	+ TipoParam1: 'entero'
+	+ TipoRetorno: 'entero'
+	+ EtiqFuncion: 'func_dias'
+*LEXEMA: 'entera'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'esFechaCorrecta'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 3
+	+ TipoParam0: 'entero'
+	+ TipoParam1: 'entero'
+	+ TipoParam2: 'entero'
+	+ TipoRetorno: 'lógico'
+	+ EtiqFuncion: 'func_esFechaCorrecta'
+*LEXEMA: 'imprimeSuma'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 2
+	+ TipoParam0: 'entero'
+	+ TipoParam1: 'entero'
+	+ TipoRetorno: 'void'
+	+ EtiqFuncion: 'func_imprimeSuma'
+*LEXEMA: 'potencia'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 2
+	+ TipoParam0: 'entero'
+	+ TipoParam1: 'entero'
+	+ TipoRetorno: 'void'
+	+ EtiqFuncion: 'func_potencia'
+*LEXEMA: 'no'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'nada'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'demo'
+	Atributos:
+	+ Tipo: 'funcion'
+	+ numParam: 0
+	+ TipoParam: '-'
+	+ TipoRetorno: 'void'
+	+ EtiqFuncion: 'func_demo'
+*LEXEMA: 'v0'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'v3'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'v1'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'El'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'primer'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'valor'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'era'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'i'
+	Atributos:
+	+ Tipo: 'entero'
+*LEXEMA: 'zv'
+	Atributos:
+	+ Tipo: '-'
+*LEXEMA: 'true'
+	Atributos:
+	+ Tipo: '-'
